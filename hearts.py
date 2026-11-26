@@ -283,7 +283,10 @@ def merge_tw_ranks(S, now):
             p0 = {k: v for k, v in last["r"].items() if v <= TOP}
             p1 = {k: v for k, v in rec["r"].items() if v <= TOP}
             lines = [f"⬆ 進入前 {TOP}：{names.get(k, k)}（第 {v} 名）" for k, v in sorted(p1.items(), key=lambda x: x[1]) if k not in p0]
-            lines += [f"⬇ 掉出前 {TOP}：{names.get(k, k)}" for k in p0 if k not in p1]
+            # 只有這次真的查到那麼深、卻沒看到，才算掉出（避免查得比較淺被誤判）
+            dep = rec.get("depth", {})
+            lines += [f"⬇ 掉出前 {TOP}：{names.get(k, k)}" for k, v in p0.items()
+                      if k not in p1 and dep.get("E" if k.startswith("e") else "S", 0) >= v]
             if lines:
                 pend = cl.setdefault("pending", [])
                 ok = ntfy("🏆 人氣排行變動", "\n".join(lines))

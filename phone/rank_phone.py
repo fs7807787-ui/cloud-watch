@@ -28,7 +28,7 @@ REPO = "fs7807787-ui/cloud-watch"
 TOKEN_FILE = os.path.expanduser("~/Documents/.cloudwatch_token")
 UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1"
 BASE = "https://store.line.me"
-PAGES = 28   # 每頁 36 組，28 頁 ≈ 前 1,000 名
+PAGES = 50   # 每頁 36 組，去掉重複後約前 1,800 名（跟以前電腦版一樣深）
 RANK_URLS = {
     "S": "/stickershop/showcase/top_creators/zh-Hant?page={p}",
     "E": "/emojishop/showcase/top_creators/zh-Hant?page={p}",
@@ -206,6 +206,7 @@ def main():
         return
     if "--setup" in args:
         tok = input("貼上 GitHub token（github_pat_ 開頭）後按 Enter：").strip()
+        print("\033[2J\033[3J\033[H", end="", flush=True)   # 清掉畫面，token 不會留在螢幕上
         m = re.search(r"github_pat_[A-Za-z0-9_]{82}", tok)
         if not m:
             log("token 格式不對，請重新執行 --setup")
