@@ -193,8 +193,9 @@ function render(){
 async function load(){
   let d = null;
   try { const r = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok) d = await r.json(); } catch(e){}
-  if (!d){ try { const r = await fetch(SEED_URL + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok) d = await r.json(); } catch(e){} }
-  if (d && Array.isArray(d.snaps)){ S = d; loadErr = ''; loadedAt = Date.now(); }
+  let seed = false;
+  if (!d && !S){ try { const r = await fetch(SEED_URL + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok){ d = await r.json(); seed = true; } } catch(e){} }
+  if (d && Array.isArray(d.snaps)){ S = d; loadErr = seed ? '⚠ 讀不到雲端的最新資料，目前顯示的是 11/26 搬家時的舊資料。' : ''; loadedAt = Date.now(); }
   else loadErr = S ? '這次讀取失敗，顯示的是上一次的資料。' : '讀不到資料，請稍後再重新整理。';
   render();
 }
