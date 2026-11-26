@@ -42,7 +42,13 @@ say "4/6 設定 GitHub token"
 if [ -z "${GH_TOKEN:-}" ]; then
   read -rsp "貼上 GitHub token（github_pat_ 開頭，貼上後畫面不會顯示，直接按 Enter）：" GH_TOKEN </dev/tty; echo
 fi
-case "$GH_TOKEN" in github_pat_*|ghp_*) ;; *) fail "token 格式不對，應該是 github_pat_ 開頭" ;; esac
+GH_TOKEN=$(printf '%s' "$GH_TOKEN" | tr -d '[:space:]')
+echo "收到的 token：${GH_TOKEN:0:11}…（共 ${#GH_TOKEN} 個字）"
+case "$GH_TOKEN" in
+  github_pat_*|ghp_*) ;;
+  "") fail "沒有收到 token（可能沒貼上）。在黑色視窗裡請用 Ctrl+Shift+V 或按滑鼠右鍵 →「貼上」，再按 Enter" ;;
+  *) fail "token 格式不對，應該是 github_pat_ 開頭（上面顯示的是你貼進來的開頭）" ;;
+esac
 CODE='import urllib.request,time;exec(urllib.request.urlopen("https://raw.githubusercontent.com/'"$REPO"'/main/gcp/rank.py?t="+str(time.time())).read())'
 gcloud run jobs deploy "$JOB" --region="$REGION" --image="$IMAGE" \
   --command=python3 --args="^|^-c|$CODE" \
