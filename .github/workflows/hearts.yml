@@ -5,8 +5,8 @@ on:
     - cron: "3-59/10 * * * *"   # 每 10 分鐘（GitHub 有時會延遲幾分鐘）
   workflow_dispatch:
     inputs:
-      force_rank:
-        description: "這次也查排行（1＝要）"
+      ranks:
+        description: "這次也查排行（1＝要；雲端讀到的是美國排行）"
         required: false
         default: "0"
   push:
@@ -38,7 +38,8 @@ jobs:
 
       - name: 記錄愛心數
         env:
-          FORCE_RANK: ${{ github.event.inputs.force_rank || (github.event_name == 'push' && '1') || '0' }}
+          RANKS: ${{ github.event.inputs.ranks || '0' }}
+          FORCE_RANK: ${{ github.event.inputs.ranks || '0' }}
         run: python3 hearts.py
 
       - name: 存回 data 分支

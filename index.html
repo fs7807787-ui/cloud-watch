@@ -167,7 +167,7 @@ function render(){
       if (!rids.length) h += `<div class="sub">目前沒有作品在前 1,000 名內。</div>`;
       else h += `<table><thead><tr><th>作品</th><th class="n">名次</th><th class="n">較上次</th><th class="n">最佳</th></tr></thead><tbody>${rids.map(id => `<tr><td>${nmLink(S.sets.find(x => x.id === id))}<span class="tag">${id[0] === 's' ? '貼圖' : '表情貼'}</span></td><td class="n" style="white-space:nowrap"><b>第 ${fmt(R1.r[id])} 名</b></td><td class="n" style="white-space:nowrap">${!R0 ? '<span class="flat">—</span>' : (R0.r[id] == null ? '<span class="up">新進榜</span>' : deltaHTML(R0.r[id] - R1.r[id]))}</td><td class="n sub" style="white-space:nowrap">第 ${fmt(best[id])} 名</td></tr>`).join('')}</tbody></table>`;
       if (dropped.length) h += `<div class="sub" style="margin-top:6px">掉出排行：${dropped.map(nm).join('、')}</div>`;
-      h += `<div class="sub" style="margin-top:8px">最後查詢：${dt(R1.t)}，只列出前 1,000 名，每小時更新一次。名次數字越小越前面，▲ 代表名次往前。</div></section>`;
+      h += `<div class="sub" style="margin-top:8px">最後查詢：${dt(R1.t)}，只列出前 1,000 名。${(S.cloud||{}).rankError ? '雲端讀到的是美國的排行，所以目前暫停更新名次。' : '每小時更新一次。'}名次數字越小越前面，▲ 代表名次往前。</div></section>`;
     }
     h += `<section class="card chart"><div class="row" style="justify-content:space-between;margin-bottom:8px"><h2 style="margin:0">總愛心數變化</h2><div class="row">${[['today', '今天'], ['7d', '7 天'], ['30d', '30 天'], ['all', '全部']].map(([k, l]) => `<button class="btn sm${chartRange === k ? ' pri' : ''}" data-a="range" data-r="${k}">${l}</button>`).join('')}</div></div>${chart2(snaps)}</section>`;
     const baseM = baseIdx >= 0 ? car[baseIdx] : {};
@@ -182,7 +182,7 @@ function render(){
   }
   const C = S.cloud || {};
   h += `<section class="card"><h2>雲端自動記錄</h2><div style="font-size:14px">
-    <p style="margin:0 0 6px">每 10 分鐘由 GitHub 自動讀一次全部作品的愛心數，排行每小時查一次。電腦不用開著，手機打開這個網頁就能看。</p>
+    <p style="margin:0 0 6px">每 10 分鐘由 GitHub 自動讀一次全部作品的愛心數。電腦不用開著，手機打開這個網頁就能看。</p>
     <div class="sub">${C.lastRun ? '最後執行：' + ago(C.lastRun) + (C.ok != null ? `，讀到 ${C.ok} 組` : '') : '還沒執行過'}${C.failed && C.failed.length ? `，讀不到 ${C.failed.length} 組` : ''}${C.error ? '<br><span style="color:var(--red)">' + esc(C.error) + '</span>' : ''}${C.rankError ? '<br>排行：' + esc(C.rankError) : ''}</div>
     <div class="sub" style="margin-top:4px">網頁每 5 分鐘自動更新${loadedAt ? '，上次讀取 ' + ago(loadedAt) : ''}。</div>
   </div></section></div>`;

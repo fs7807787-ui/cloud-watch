@@ -24,6 +24,9 @@ DATA = os.environ.get("HEARTS_FILE", "data/hearts.json")
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
 BASE = "https://store.line.me"
 RANK_EVERY_MS = 55 * 60 * 1000   # 排行每小時查一次
+# GitHub 的伺服器在美國，讀到的是美國的排行，跟台灣不同，所以先關掉（設 RANKS=1 才會查）
+RANK_ENABLED = os.environ.get("RANKS") == "1"
+CLOUD_START = 1795658000000      # 雲端版開始的時間（2026/11/26 10:00 左右）
 RANK_DEPTH = 1800                # 排行查到第幾名
 RANK_KEEP = 300                  # 排行紀錄最多保留幾筆
 Q = "query W($i:ID!,$t:ShopProductType!){wishStatus(input:{id:$i,productType:$t}){wishCount}}"
@@ -257,11 +260,16 @@ def main():
         log("讀不到：", bad)
     log(f"沒出現在作者頁的 {len(hidden)} 組：", hidden)
 
-    # 3. 排行
-    try:
-        log(check_ranks(S, now, set(sets)))
-    except Exception as e:
-        log("排行發生錯誤：", repr(e))
+    # 3. 排行（目前暫停：雲端讀到的是美國排行）
+    # 刪掉雲端第一次執行時存下的錯誤排行紀錄（美國排行，裡面沒有你的作品）
+    S["ranks"] = [x for x in S.get("ranks", []) if x["t"] < CLOUD_START or x.get("src") == "tw"]
+    if RANK_ENABLED:
+        try:
+            log(check_ranks(S, now, set(sets)))
+        except Exception as e:
+            log("排行發生錯誤：", repr(e))
+    else:
+        S.setdefault("cloud", {})["rankError"] = "雲端讀到的是美國的排行，跟台灣不同，所以暫停查詢；下面顯示的是 11/26 早上以前電腦記錄的名次。"
     save(S)
 
 
