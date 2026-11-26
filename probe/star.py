@@ -1,20 +1,20 @@
-import sys, collections
-sys.path.insert(0, ".")
-import trip, datetime as dt
-from concurrent.futures import ThreadPoolExecutor
-d = dt.date(2026, 12, 3)
-def f(cid):
-    url = (f"https://tw.trip.com/hotels/list?city={cid}&checkin={d:%Y/%m/%d}&checkout={d+dt.timedelta(1):%Y/%m/%d}"
-           f"&adult=2&crn=1&curr=TWD{trip.STAR_FILTER}")
-    return cid, trip.parse(trip.get(url)[1])
-with ThreadPoolExecutor(3) as ex:
-    for cid, items in ex.map(f, trip.CITIES):
-        c = collections.Counter((x[4][1], x[4][0]) for x in items)
-        print(trip.CITIES[cid], dict(c))
-        for x in items:
-            if x[4][1] != 1:
-                print("    非官方星級：", x[1], x[4])
-# 觀海樓
-url = ("https://tw.trip.com/hotels/list?city=7662&checkin=2026/12/26&checkout=2026/12/27&adult=2&crn=1&curr=TWD" + trip.STAR_FILTER)
-for x in trip.parse(trip.get(url)[1]):
-    if "觀海" in x[1] or "璞旅" in x[1]: print("找到：", x)
+import json, urllib.request, collections
+for url in ["https://media.taiwan.net.tw/XMLReleaseALL_public/hotel_C_f.json"]:
+    try:
+        raw = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read()
+        print(url, len(raw))
+        txt = raw.decode("utf-8-sig", "replace")
+        d = json.loads(txt)
+        info = d
+        for k in ("XML_Head", "Infos", "Info"):
+            if isinstance(info, dict) and k in info: info = info[k]
+        print(type(info), len(info))
+        print(json.dumps(info[0], ensure_ascii=False)[:800])
+        keys = [k for k in info[0] if k.lower() in ("grade", "class", "star", "level")]
+        for k in keys:
+            print(k, collections.Counter(str(x.get(k)) for x in info).most_common(12))
+        for x in info:
+            if any(s in x.get("Name", "") for s in ("觀海樓", "板城璞旅", "傑仕堡", "希爾頓", "晶華", "煙波")):
+                print("  ", x.get("Name"), {k: x.get(k) for k in keys}, x.get("Add", "")[:20])
+    except Exception as e:
+        print("ERR", url, repr(e))
