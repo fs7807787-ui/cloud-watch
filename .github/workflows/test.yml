@@ -20,23 +20,49 @@ jobs:
           import re, json, urllib.request, html as H
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
           def get(u):
-              with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=40) as r:
-                  return r.read().decode("utf-8", "replace")
-          h = get("https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
-          i = h.find('class="hotelName"')
-          print("=== 第一張飯店卡片 ===")
-          print(re.sub(r"\s+", " ", h[max(0, i-2500):i+3500]))
-          print("\n=== 卡片數量 ===", h.count('class="hotelName"'))
-          names = [H.unescape(x) for x in re.findall(r'class="hotelName"[^>]*>(?:<[^>]+>)*([^<]+)', h)]
-          print("飯店名稱：", names[:25])
-          for k in ["hotelId", "hotelName", "price", "cityName"]:
-              for pat in ['\\"' + k + '\\":', '"' + k + '":']:
-                  j = h.find(pat)
-                  if j >= 0:
-                      print(f"[{k}] {pat} …", h[j:j+260].replace("\n", " "))
-                      break
-          for cid in [720, 228, 219]:
-              hh = get(f"https://tw.trip.com/hotels/list?city={cid}&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
-              nm = [H.unescape(x) for x in re.findall(r'class="hotelName"[^>]*>(?:<[^>]+>)*([^<]+)', hh)][:3]
-              print(f"city={cid} 前 3 家：{nm}")
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=40) as r:
+                      return r.status, r.geturl(), r.read().decode("utf-8", "replace")
+              except Exception as e:
+                  return getattr(e, "code", 0), u, ""
+          def flight(h):
+              t = ""
+              for m in re.finditer(r"self\.__next_f\.push\((\[.*?\])\)</script>", h, re.S):
+                  try: t += "".join(x for x in json.loads(m.group(1)) if isinstance(x, str))
+                  except Exception: pass
+              return t
+          # 1. 台灣城市代碼
+          for u in ["https://tw.trip.com/fivestars/country/taiwan.html", "https://tw.trip.com/hotels/taiwan-hotels/", "https://tw.trip.com/fourstars/country/taiwan.html"]:
+              st, url, h = get(u)
+              cities = sorted(set(re.findall(r'href="[^"]*/hotels/([a-z0-9-]+)-hotels-list-(\d+)', h)))
+              cities2 = sorted(set(re.findall(r'/(?:fivestars|fourstars|hotels/star\d)/city/[a-z]+/([a-z0-9-]+)\.html', h)))
+              print(f"{u} → HTTP {st} {url}  城市 {len(cities)}: {cities[:60]}  其他 {cities2[:40]}")
+          # 2. 星級在資料裡怎麼表示
+          st, url, h = get("https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
+          t = flight(h)
+          j = t.find('"hotelId":"')
+          blk = t[j:j+6000]
+          for k in ["star", "Star", "diamond", "level", "grade"]:
+              for m in re.finditer('"[^"]*' + k + '[^"]*":[^,{]{0,30}', blk):
+                  print("  星級欄位：", m.group(0))
+          # 3. 篩選與排序參數猜測
+          tests = {
+            "seo star5": "https://tw.trip.com/hotels/taipei-hotels-list-617/star5",
+            "listFilters 16~5": "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD&listFilters=16~5*16*5%2C16~4*16*4",
+            "star=4,5": "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD&star=4,5",
+            "sort price": "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD&listFilters=17~3*17*3",
+            "sort price2": "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD&sort=3",
+          }
+          for name, u in tests.items():
+              st, url, h = get(u)
+              t = flight(h)
+              rows = []
+              for m in re.finditer(r'"hotelId":"(\d+)"', t):
+                  b = t[m.start():m.start()+6000]
+                  nm = re.search(r'"nameInfo":\{"name":"([^"]*)"', b); pr = re.search(r'"price":(\d+),"currency":"TWD"', b)
+                  sr = re.search(r'"star":(\d)', b)
+                  if nm and pr: rows.append((nm.group(1)[:14], int(pr.group(1)), sr.group(1) if sr else "?"))
+              seen=[]; [seen.append(r) for r in rows if r not in seen]
+              stars = re.findall(r'aria-label="5 鑽評級，得 (\d) 鑽"', h) + re.findall(r'aria-label="5 星級，得 (\d) 星"', h)
+              print(f"【{name}】HTTP {st} → {url[:90]}\n   飯店(名稱,價格,星)：{seen[:12]}\n   卡片星級：{stars[:12]}")
           PYEOF
