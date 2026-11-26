@@ -1,4 +1,4 @@
-name: 雲端測試（其他訂房比價網站）
+name: 雲端測試（trivago 價格）
 
 on:
   workflow_dispatch:
@@ -14,41 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: 測各網站
+      - name: trivago
         run: |
           python3 - <<'PYEOF'
-          import re, urllib.request, urllib.error, urllib.robotparser, urllib.parse
-          UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
-          T = [
-            ("KAYAK", "https://www.tw.kayak.com/hotels/Taipei,Taiwan-c20435/2026-12-24/2026-12-25/2adults"),
-            ("Expedia", "https://www.expedia.com.tw/Hotel-Search?destination=Taipei%2C%20Taiwan&startDate=2026-12-24&endDate=2026-12-25&adults=2"),
-            ("Hotels.com", "https://tw.hotels.com/Hotel-Search?destination=Taipei%2C%20Taiwan&startDate=2026-12-24&endDate=2026-12-25&adults=2"),
-            ("trivago", "https://www.trivago.com.tw/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379"),
-            ("Skyscanner 飯店", "https://www.skyscanner.com.tw/hotels/taiwan/taipei-hotels/ci-27547053"),
-            ("Klook 飯店", "https://www.klook.com/zh-TW/hotels/city/19-taipei-hotels/"),
-            ("易遊網 飯店", "https://hotel.eztravel.com.tw/"),
-            ("雄獅 飯店", "https://travel.liontravel.com/search?Country=TW&WebCode=B2C&TravelType=2"),
-            ("HotelsCombined", "https://www.hotelscombined.com.tw/"),
-            ("Trip.com 對照", "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD"),
-          ]
-          def get(u):
-              req = urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9", "Accept": "text/html"})
-              try:
-                  with urllib.request.urlopen(req, timeout=30) as r:
-                      return r.status, r.geturl(), r.read().decode("utf-8", "replace")
-              except urllib.error.HTTPError as e:
-                  return e.code, u, e.read().decode("utf-8", "replace")[:3000]
-              except Exception as e:
-                  return 0, u, repr(e)
-          for name, url in T:
-              p = urllib.parse.urlparse(url)
-              rp = urllib.robotparser.RobotFileParser(); rp.set_url(f"{p.scheme}://{p.netloc}/robots.txt")
-              try:
-                  rp.read(); allowed = rp.can_fetch("*", url)
-              except Exception:
-                  allowed = "讀不到"
-              st, final, h = get(url)
-              prices = re.findall(r"(?:NT\$|TWD|NT\$&nbsp;)\s?[\d,]{3,}", h)[:5]
-              flags = sorted(set(k for k in ("captcha", "access denied", "are you a robot", "challenge", "blocked", "px-captcha", "verify you are human") if k in h.lower()))
-              print(f"【{name}】robots 允許：{allowed}｜HTTP {st}｜{len(h):,} 字元｜價格樣本：{prices}｜可疑字：{flags}｜→ {final[:80]}")
+          import urllib.robotparser
+          rp = urllib.robotparser.RobotFileParser("https://www.trivago.com.tw/robots.txt"); rp.read()
+          for path in ["/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379", "/graphql", "/api/v1/", "/zh-Hant-TW/odr/"]:
+              print("robots", path, rp.can_fetch("*", "https://www.trivago.com.tw" + path))
+          import urllib.request
+          print(urllib.request.urlopen(urllib.request.Request("https://www.trivago.com.tw/robots.txt", headers={"User-Agent": "Mozilla/5.0"})).read().decode()[:1500])
           PYEOF
+          U="https://www.trivago.com.tw/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379;dr-20261224-20261225;rc-1-2"
+          timeout 120 google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=40000 --dump-dom "$U" > t.html 2>/dev/null || true
+          echo "大小 $(wc -c < t.html)"
+          echo "價格樣本：$(grep -oE '(NT\$|TWD|\$)[ ]?[0-9,]{3,}' t.html | head -20 | tr '\n' ' ')"
+          echo "飯店名稱樣本：$(grep -oE 'data-testid="item-name"[^>]*>[^<]+' t.html | head -8 | sed 's/.*>//' | tr '\n' '|')"
+          echo "可疑字：$(grep -oiE 'captcha|access denied|are you a robot|challenge' t.html | sort -u | tr '\n' ' ')"
+          grep -oE 'data-testid="[a-z-]+"' t.html | sort | uniq -c | sort -rn | head -25
