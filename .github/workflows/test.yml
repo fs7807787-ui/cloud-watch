@@ -17,25 +17,35 @@ jobs:
       - name: 看 Trip.com 列表頁
         run: |
           python3 - <<'PYEOF'
-          import re, json, urllib.request
-          from concurrent.futures import ThreadPoolExecutor
+          import re, json, urllib.request, html as H
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
-          def probe(cid):
-              u = f"https://tw.trip.com/hotels/list?city={cid}&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD"
+          def get(u):
               try:
-                  with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW"}), timeout=40) as r:
-                      h = r.read().decode("utf-8", "replace")
-              except Exception:
-                  return cid, None, None
+                  with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=40) as r:
+                      return r.geturl(), r.read().decode("utf-8", "replace")
+              except Exception as e:
+                  return u, ""
+          def flight(h):
               t = ""
               for m in re.finditer(r"self\.__next_f\.push\((\[.*?\])\)</script>", h, re.S):
                   try: t += "".join(x for x in json.loads(m.group(1)) if isinstance(x, str))
                   except Exception: pass
-              cn = re.search(r'"cityName":"([^"]+)"', t); co = re.search(r'"countryName":"([^"]+)"', t)
-              n = len(set(re.findall(r'"hotelId":"(\d+)"', t)))
-              return cid, cn.group(1) if cn else None, (co.group(1) if co else None, n)
-          ids = list(range(3840, 3860)) + list(range(5580, 5600)) + list(range(6950, 6962)) + list(range(7560, 7580)) + [617, 720, 7203, 7614, 7809, 7810, 7811, 7812, 7524, 7525, 7526, 7527, 7528, 7529, 7530]
-          with ThreadPoolExecutor(6) as ex:
-              for cid, cn, extra in ex.map(probe, ids):
-                  if cn: print(cid, cn, extra)
+              return t
+          slugs = ["cn/hualien","cn/yilan","cn/hengchun","cn/taoyuan","cn/new-taipei-city","cn/chiayi","cn/taitung","cn/nantou","cn/keelung","cn/hsinchu",
+                   "jp/tokyo","jp/osaka","jp/kyoto","jp/sapporo","jp/okinawa","jp/naha","jp/nagoya","jp/fukuoka","jp/hakone","kr/seoul","kr/busan","kr/jeju"]
+          for sl in slugs:
+              url, h = get(f"https://us.trip.com/hotels/city/{sl}.html")
+              ids = sorted(set(re.findall(r"hotels-list-(\d+)", h)), key=lambda x: -h.count("hotels-list-" + x))[:3]
+              print(f"{sl}: → {url[:70]}  list-id 候選 {ids}")
+          base = "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD"
+          for extra in ["", "&listFilters=16~4*16*4%2C16~5*16*5", "&listFilters=16~5*16*5", "&star=4,5"]:
+              url, h = get(base + extra)
+              t = flight(h)
+              stars = re.findall(r'"star":(\d)', t)[:30]
+              names = [H.unescape(x) for x in re.findall(r'class="hotelName"[^>]*>(?:<[^>]+>)*([^<]+)', h)][:5]
+              print(f"\n[{extra or '無篩選'}] star 值樣本：{stars} 前 5 家：{names}")
+          t = flight(get(base)[1])
+          for k in ['"star"', '"starInfo"', '"hotelStar"', 'filterId', '星級', '鑽']:
+              i = t.find(k)
+              if i >= 0: print(f"\n<{k}> …{t[max(0,i-150):i+250]}")
           PYEOF
