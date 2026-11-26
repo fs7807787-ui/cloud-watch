@@ -3,6 +3,7 @@
 每次執行：
 1. 查每個城市、每個入住日期的飯店列表（Trip.com 台灣站，新台幣）
 2. 記下每家飯店在每個日期的價格歷史（data/trip.json）
+   只看四星、五星；台灣 12 個地區、日本 7 個城市、韓國 3 個城市
 3. 價格異常就發 ntfy 到 bug 價 topic：
    - 比這家飯店同一日期自己的歷史中位數低 60% 以上（至少要有 3 筆紀錄）
    - 比這家飯店這一輪其他日期的中位數低 70% 以上（第一次看到也能抓）
@@ -13,6 +14,7 @@
 """
 import datetime as dt
 import json
+from concurrent.futures import ThreadPoolExecutor
 import os
 import re
 import statistics
@@ -21,7 +23,16 @@ import time
 import urllib.error
 import urllib.request
 
-CITIES = {617: "台北", 720: "高雄", 228: "東京", 219: "大阪"}
+CITIES = {
+    # 台灣
+    617: "台北", 7662: "新北", 7570: "桃園", 3849: "台中", 3847: "台南", 720: "高雄",
+    7614: "宜蘭", 6954: "花蓮", 3848: "台東", 5589: "屏東墾丁", 7524: "南投", 650358: "嘉義",
+    # 日本
+    228: "東京", 219: "大阪", 734: "京都", 248: "福岡", 360: "名古屋", 641: "札幌", 92573: "沖繩那霸",
+    # 韓國
+    274: "首爾", 253: "釜山", 737: "濟州",
+}
+STAR_FILTER = "&listFilters=16~4*16*4%2C16~5*16*5"   # 只看四星、五星
 DAYS_AHEAD = [7, 14, 30]                     # 幾天後入住（住 1 晚）
 FIXED_DATES = ["2026-12-24", "2026-12-31", "2027-02-04", "2027-02-27", "2027-04-02"]  # 連假前一天
 DATA = os.environ.get("TRIP_FILE", "data/trip.json")
@@ -120,35 +131,48 @@ def main():
         for d in [d for d in h["p"] if d <= today.isoformat()]:
             del h["p"][d]
     alerts, seen_total = [], 0
-    for cid, cname in CITIES.items():
-        run = {}  # hid -> {date: price}
-        for d in dates(today):
-            ci = dt.date.fromisoformat(d)
-            co = ci + dt.timedelta(days=1)
-            url = (f"https://tw.trip.com/hotels/list?city={cid}&checkin={ci:%Y/%m/%d}&checkout={co:%Y/%m/%d}"
-                   f"&adult=2&crn=1&curr=TWD")
-            st, html = get(url)
-            items = parse(html)
-            seen_total += len(items)
-            log(f"{cname} {d}：HTTP {st}，{len(items)} 家")
-            for hid, name, price in items:
-                run.setdefault(hid, {})[d] = price
-                h = H.setdefault(hid, {"n": name, "c": cname, "p": {}})
-                h["n"] = name
-                hist = h["p"].get(d, [])
-                why = None
-                if len(hist) >= 3:
-                    med = statistics.median(hist)
-                    if price <= med * DROP_HIST:
-                        why = f"比這天平常的 TWD{med:,.0f} 便宜 {1 - price / med:.0%}"
-                    if 0.08 <= price / med <= 0.12:
-                        why = f"約是平常 TWD{med:,.0f} 的 1/10，疑似少打一個 0"
-                if why:
-                    alerts.append((hid, name, cname, d, price, why))
-                hist.append(price)
-                h["p"][d] = hist[-KEEP:]
-            time.sleep(1.5)
-        # 同一輪不同日期互相比較
+    jobs = [(cid, d) for cid in CITIES for d in dates(today)]
+
+    def fetch(job):
+        cid, d = job
+        ci = dt.date.fromisoformat(d)
+        co = ci + dt.timedelta(days=1)
+        url = (f"https://tw.trip.com/hotels/list?city={cid}&checkin={ci:%Y/%m/%d}&checkout={co:%Y/%m/%d}"
+               f"&adult=2&crn=1&curr=TWD{STAR_FILTER}")
+        st, html = get(url)
+        cn = re.search(r'\\?"cityName\\?":\\?"([^"\\]+)', html)
+        return job, st, parse(html), (cn.group(1) if cn else "?")
+
+    with ThreadPoolExecutor(3) as ex:
+        results = list(ex.map(fetch, jobs))
+    by_city = {}
+    for (cid, d), st, items, cn in results:
+        cname = CITIES[cid]
+        if d == dates(today)[0]:
+            log(f"{cname}（Trip.com 顯示：{cn}）")
+        seen_total += len(items)
+        if st != 200 or not items:
+            log(f"  {cname} {d}：HTTP {st}，{len(items)} 家")
+        run = by_city.setdefault(cid, {})
+        for hid, name, price in items:
+            run.setdefault(hid, {})[d] = price
+            h = H.setdefault(hid, {"n": name, "c": cname, "p": {}})
+            h["n"], h["c"] = name, cname
+            hist = h["p"].get(d, [])
+            why = None
+            if len(hist) >= 3:
+                med = statistics.median(hist)
+                if price <= med * DROP_HIST:
+                    why = f"比這天平常的 TWD{med:,.0f} 便宜 {1 - price / med:.0%}"
+                if 0.08 <= price / med <= 0.12:
+                    why = f"約是平常 TWD{med:,.0f} 的 1/10，疑似少打一個 0"
+            if why:
+                alerts.append((hid, name, cname, d, price, why))
+            hist.append(price)
+            h["p"][d] = hist[-KEEP:]
+    # 同一輪不同日期互相比較
+    for cid, run in by_city.items():
+        cname = CITIES[cid]
         for hid, byd in run.items():
             if len(byd) < 3:
                 continue
