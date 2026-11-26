@@ -125,18 +125,19 @@ def github(token, method, path, body=None):
             return e.code, {}
 
 
-def save(token, rec):
+def save(token, rec, name="ranks-phone.json", raw=None, msg="手機台灣排行 "):
     st, _ = github(token, "GET", "/git/ref/heads/ranks")
     if st == 404:
         st, main = github(token, "GET", "/git/ref/heads/main")
         github(token, "POST", "/git/refs", {"ref": "refs/heads/ranks", "sha": main["object"]["sha"]})
-    st, cur = github(token, "GET", "/contents/ranks-phone.json?ref=ranks")
-    body = {"message": "手機台灣排行 " + time.strftime("%Y/%m/%d %H:%M"),
-            "content": base64.b64encode(json.dumps(rec, ensure_ascii=False).encode()).decode(),
+    st, cur = github(token, "GET", "/contents/%s?ref=ranks" % name)
+    data = raw if raw is not None else json.dumps(rec, ensure_ascii=False).encode()
+    body = {"message": msg + time.strftime("%Y/%m/%d %H:%M"),
+            "content": base64.b64encode(data).decode(),
             "branch": "ranks"}
     if st == 200 and cur.get("sha"):
         body["sha"] = cur["sha"]
-    st, res = github(token, "PUT", "/contents/ranks-phone.json", body)
+    st, res = github(token, "PUT", "/contents/" + name, body)
     if st in (200, 201):
         return True
     log("存到 GitHub 失敗：HTTP %s %s" % (st, str(res.get("message", ""))[:120]))
@@ -199,8 +200,30 @@ def site_test():
             log("%s：⚠ 網頁打得開（HTTP %s，%d 字元），但價格是後來才載入，讀不到" % (name, st, len(h)))
 
 
+def sky_sample(token):
+    """一次性：抓 Skyscanner 台北飯店頁的原始網頁存到 GitHub，讓雲端寫讀價格的程式（遵守 robots.txt）。"""
+    import gzip
+    import urllib.robotparser
+    url = "https://www.skyscanner.com.tw/hotels/taiwan/taipei-hotels/ci-27547053"
+    rp = urllib.robotparser.RobotFileParser()
+    rp.set_url("https://www.skyscanner.com.tw/robots.txt")
+    rp.read()
+    if not rp.can_fetch(UA, url):
+        log("Skyscanner 規則不允許讀這頁，停止")
+        return
+    st, h = get(url)
+    log("Skyscanner 台北：HTTP %s，%d 字元，價格 %d 個" % (st, len(h), len(re.findall(r"NT\$\s?[\d,]+", h))))
+    if st != 200 or not h:
+        return
+    if save(token, None, "sky-sample.html.gz", gzip.compress(h.encode()), "Skyscanner 樣本 "):
+        log("✅ 樣本已存到 GitHub，跟 Claude 說一聲")
+
+
 def main():
     args = sys.argv[1:]
+    if "--sky-sample" in args:
+        sky_sample(open(TOKEN_FILE).read().strip())
+        return
     if "--sites" in args:
         site_test()
         return
