@@ -40,13 +40,17 @@ def log(*a):
 
 
 def get(url, tries=3, headers=None):
-    h = {"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}
+    h = {"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9", "Accept-Encoding": "gzip"}   # 壓縮傳輸，省約 85% 流量
     h.update(headers or {})
     last = (0, "")
     for i in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=30) as r:
-                return r.status, r.read().decode("utf-8", "replace")
+                b = r.read()
+                if r.headers.get("Content-Encoding") == "gzip":
+                    import gzip
+                    b = gzip.decompress(b)
+                return r.status, b.decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             if e.code in (403, 404):
                 return e.code, ""
