@@ -1,0 +1,6974 @@
+[
+{
+"hid": "1829145",
+"name": "德立莊飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.67,
+"off_guess": "三德大飯店"
+},
+{
+"hid": "80449023",
+"name": "格拉斯麗台北飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "格拉斯麗台北飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "700941",
+"name": "圓山大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "圓山大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "81940046",
+"name": "路徒Plus行旅-站前館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "路徒PLUS行旅-站前館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "132923056",
+"name": "Oani",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.24,
+"off_guess": "樂山水靜旅館 OrigInn"
+},
+{
+"hid": "659925",
+"name": "台北W飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北W飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "113246961",
+"name": "台北漢來大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北漢來大飯店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "701734",
+"name": "承攜行旅台北八德館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "承攜行旅台北八德館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "701682",
+"name": "天閣飯店信義館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "天閣酒店(台北南西)",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "659923",
+"name": "和逸飯店（台北忠孝館）",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.67,
+"off_guess": "瑞絲逸旅店"
+},
+{
+"hid": "135431024",
+"name": "台北洲際飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "臺北洲際酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "120255312",
+"name": "梧邸飯店 台北杭州",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "梧邸酒店台北杭州",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "8511737",
+"name": "台北凱達大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "凱達大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "700650",
+"name": "台北晶華飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "晶華酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "654775",
+"name": "台北富驛時尚飯店 南京東路館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富驛時尚酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "104677476",
+"name": "見潭璞旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "見潭璞旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "99939524",
+"name": "雲沐行旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "雲沐行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "15879485",
+"name": "阿樹國際旅店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "阿樹國際旅店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2637298",
+"name": "台北萬豪飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北萬豪酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "700965",
+"name": "國聯大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "國聯大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "5448590",
+"name": "台北松山意舍飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台北松山意舍酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "78246064",
+"name": "JR東日本大飯店台北",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "JR東日本大飯店台北",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "701415",
+"name": "台北凱撒大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北凱撒大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "701427",
+"name": "台北馥敦飯店-復南館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台北馥敦飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "3628076",
+"name": "台北六福萬怡飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台北六福萬怡酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "701791",
+"name": "三德大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "三德大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "662919",
+"name": "台北大直薇閣精品旅館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "薇閣精品旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "128716334",
+"name": "秐朗文旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "秐朗旅宿",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.75
+},
+{
+"hid": "700217",
+"name": "沐蘭精品旅館 - 台北大直館 - Mulan Boutique Hotel",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "沐蘭精品旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2333217",
+"name": "台北士林有誠商旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "有誠商旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "931871",
+"name": "天閣飯店（台北長安館）",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "天閣酒店台北劍潭",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "701867",
+"name": "台北天豪屋",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.55,
+"off_guess": "台北天晴旅店"
+},
+{
+"hid": "442401",
+"name": "台北喜來登大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北寒舍喜來登大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 0.88
+},
+{
+"hid": "701511",
+"name": "美麗信花園飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "美麗信花園酒店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "2579433",
+"name": "新驛旅店（台北復興北路店）",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "新驛旅店西門捷運店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "33618953",
+"name": "南港老爺行旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "南港老爺行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "663089",
+"name": "亞都麗致大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "亞都麗緻大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 0.83
+},
+{
+"hid": "1099311",
+"name": "洛碁大飯店-驛",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "洛碁大飯店驛",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1537101",
+"name": "台北互舍飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.73,
+"off_guess": "台北W飯店"
+},
+{
+"hid": "113837622",
+"name": "柯達大飯店 台北南京",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "柯達大飯店台北南京",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "133358079",
+"name": "嵨開安旅",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "嵨開安旅Hotel Uketamo",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "109251792",
+"name": "索拉利亞西鐵飯店台北西門",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.7,
+"off_guess": "相鐵飯店台北西門"
+},
+{
+"hid": "66770908",
+"name": "和苑三井花園飯店 台北忠孝",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "和苑三井花園飯店  台北忠孝",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "701703",
+"name": "君品飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北君品大酒店",
+"off_star": 5,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "90306154",
+"name": "寒居飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "寒居酒店 Humble Boutique Hotel",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "115830540",
+"name": "相鐵飯店台北西門",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "相鐵飯店台北西門",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "67237892",
+"name": "天閣飯店台北士林館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "天閣酒店(台北南西)",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "749477",
+"name": "台糖台北會館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台糖台北會館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "999654",
+"name": "台北美侖大飯店",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台北美福大飯店",
+"off_star": 6,
+"off_class": [
+1
+],
+"match": 0.83
+},
+{
+"hid": "1207953",
+"name": "天閣飯店復興館",
+"city": "台北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "天閣酒店(台北南西)",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "63341173",
+"name": "傑仕堡有氧飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "傑仕堡有氧酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "132319836",
+"name": "新北北海溫泉洲際飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "新北北海溫泉洲際酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "10606587",
+"name": "新北趣淘漫旅",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.4,
+"off_guess": "新莊客旅"
+},
+{
+"hid": "1061503",
+"name": "馥都飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "馥都飯店",
+"off_star": 3,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1378601",
+"name": "新北烏來璞石麗致溫泉會館",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.7,
+"off_guess": "璞石麗緻溫泉會館"
+},
+{
+"hid": "97209196",
+"name": "雀客藏居新北三重水漾館",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "雀客藏居新北三重水漾",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "25195615",
+"name": "台北新板希爾頓飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北新板希爾頓酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "95343288",
+"name": "觀海樓大飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "觀海樓旅店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1084394",
+"name": "福容大飯店淡水漁人碼頭店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "福容大飯店    淡水漁人碼頭",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "7955445",
+"name": "板橋凱撒大飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "板橋凱撒大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "127628246",
+"name": "嶼民宿",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "嶼民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "97074863",
+"name": "汐止福泰大飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "汐止福泰大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "112947178",
+"name": "新北林口爵怡溫德姆飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "新北林口爵怡溫德姆酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "4959811",
+"name": "蘊泉庄",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "蘊泉庄(鴻寬)",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2336332",
+"name": "麗京棧飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "麗京棧酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "4615249",
+"name": "樂頤飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "樂頤飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "24396216",
+"name": "新北林口亞昕福朋喜來登",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.7,
+"off_guess": "亞昕福朋喜來登酒店"
+},
+{
+"hid": "94056940",
+"name": "新北新莊凱悅嘉軒飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "新北新莊凱悅嘉軒酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "106370644",
+"name": "八里福朋喜來登飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "八里福朋喜來登酒店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "44105024",
+"name": "將捷金鬱金香飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "將捷金鬱金香酒店",
+"off_star": 4,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "130773619",
+"name": "曉宅山民宿",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "曉宅山",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 0.75
+},
+{
+"hid": "878687",
+"name": "瓏山林台北中和飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "瓏山林台北中和飯店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "1233070",
+"name": "樂樂旅蘆洲",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.46,
+"off_guess": "雀客旅館新北蘆洲"
+},
+{
+"hid": "134671119",
+"name": "板城璞旅",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "板城璞旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "128041074",
+"name": "蘇卡利 漫活",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "蘇卡利･漫活",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1179761",
+"name": "福泰翡翠灣渡假飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福泰翡翠灣渡假飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "8162230",
+"name": "大埔硫磺溫泉商旅",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "大埔硫磺溫泉商務旅舘",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.89
+},
+{
+"hid": "35535637",
+"name": "捷絲旅（台北三重館）",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.57,
+"off_guess": "錸捷行旅"
+},
+{
+"hid": "5911399",
+"name": "台北富信大飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富信大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "3630157",
+"name": "新北白金花園飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "白金花園酒店",
+"off_star": 4,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1194264",
+"name": "海灣假日飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "海灣假日酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "134401519",
+"name": "台北板橋馥華艾美飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台北板橋馥華艾美酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1233020",
+"name": "集璦飯店",
+"city": "新北",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "集璦飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "124793570",
+"name": "桃園國際機場凱悅飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "桃園國際機場凱悅酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "19831982",
+"name": "六星旅館桃園館",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "六星旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1591235",
+"name": "六星旅館 中壢館",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "六星旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "132201693",
+"name": "丰居中壢",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.73,
+"off_guess": "丰居旅店中壢館"
+},
+{
+"hid": "63973336",
+"name": "和逸飯店桃園館",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "和逸飯店桃園青埔館",
+"off_star": 4,
+"off_class": [
+1
+],
+"match": 0.88
+},
+{
+"hid": "6129115",
+"name": "桃園大溪笠復威斯汀度假飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "桃園大溪笠復威斯汀度假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "23645147",
+"name": "潮旅館",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.6,
+"off_guess": "潮摩鐵汽車旅館"
+},
+{
+"hid": "1431744",
+"name": "桃園富立登國際大飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "富立登國際大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1011729",
+"name": "福容徠旅 中壢",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.67,
+"off_guess": "福容徠旅 林口"
+},
+{
+"hid": "996394",
+"name": "桃園喜來登飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "桃園喜來登酒店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "4690286",
+"name": "HOTEL IN 三揚精品商旅",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "三揚精品商旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1183477",
+"name": "古華花園飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "古華花園飯店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "101809645",
+"name": "青埔商旅",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "青埔商務旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.8
+},
+{
+"hid": "982190",
+"name": "桃園尊爵大飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "尊爵大飯店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "4614105",
+"name": "福容大飯店桃園機場捷運A8",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "福容大飯店   桃園",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "127904781",
+"name": "桃園機場假日飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "桃園機場假日酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1585268",
+"name": "桃園智選假日飯店",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "桃園智選假日飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1057495",
+"name": "尊爵天際大飯店 （近台茂）",
+"city": "桃園",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "尊爵天際大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1011727",
+"name": "福容大飯店桃園",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福容大飯店   桃園",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "971456",
+"name": "城市商旅（桃園航空館）",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "城市商旅-航空館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "132044106",
+"name": "千塘行旅",
+"city": "桃園",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "千塘行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "105284821",
+"name": "享得道行旅 In Joy Hotel",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "享得道行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "50849899",
+"name": "新通豪大飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "通豪大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1504560",
+"name": "豐邑逢甲商旅",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.4,
+"off_guess": "知客商旅"
+},
+{
+"hid": "848304",
+"name": "台中日月千禧酒店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "日月千禧酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "125454930",
+"name": "采寓",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "采寓",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "134445502",
+"name": "丰森飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "丰森飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "6373838",
+"name": "GOGO HOTEL 逢甲館",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "GOGO HOTEL",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "794662",
+"name": "碧根逢甲飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "碧根逢甲酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "129234083",
+"name": "歐酷飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "歐菲旅店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.75
+},
+{
+"hid": "38450917",
+"name": "余舍行旅",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "余舍行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "5306343",
+"name": "承攜行旅台中自由館",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "承攜行旅台中自由館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1748821",
+"name": "台中林酒店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台中港酒店",
+"off_star": 4,
+"off_class": [
+2
+],
+"match": 0.8
+},
+{
+"hid": "890587",
+"name": "台中長榮桂冠飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "長榮桂冠酒店(台中)",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "26424587",
+"name": "台中大毅老爺行旅",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台中大毅老爺行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1004901",
+"name": "豪爵大飯店台中館",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "豪爵大飯店台中館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "3645278",
+"name": "薆悅飯店(台中館)",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "薆悅酒店-Grand",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "5293665",
+"name": "GOGO HOTEL  市政館",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "GOGO HOTEL",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "104381639",
+"name": "台中李方艾美飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台中李方艾美酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "17968814",
+"name": "薆悅飯店(台中五權館)",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "薆悅酒店-Grand",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "848364",
+"name": "天閣飯店（台中館）",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "天閣酒店台中THE Tango",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "129787585",
+"name": "橙居台中",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "百橙橙居台中",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "763255",
+"name": "文華道會館",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "文華道會館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "42482249",
+"name": "台中萬豪萬楓飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台中萬豪萬楓酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "14797669",
+"name": "卡爾登飯店（台灣台中館）",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "卡爾登飯店台中館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1004924",
+"name": "Ohotel麗加園邸飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "麗加園邸酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "848344",
+"name": "台中金典飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台中金典酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1006098",
+"name": "新驛旅店（台中車站店）",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "新驛旅店台中車站店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "23156743",
+"name": "雀客藏居臺中大墩 l 近勤美商圈",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "雀客藏居台中大墩",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1232304",
+"name": "台中中科大飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "中科大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "848347",
+"name": "台中全國大飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "全國大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "50837130",
+"name": "臺中逢甲智選假日飯店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "臺中逢甲智選假日酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "924355",
+"name": "臺中車站智選假日酒店",
+"city": "台中",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台中車站智選假日酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "95390518",
+"name": "禧榕軒大飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "禧榕軒大飯店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "108624336",
+"name": "Chapter127",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "CHAPTER 127",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "6672242",
+"name": "宅夏都",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "宅夏都",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1614139",
+"name": "和逸飯店 台南西門館",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "和逸 台南西門館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.88
+},
+{
+"hid": "4433649",
+"name": "台南富驛時尚飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富驛時尚酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "97447552",
+"name": "福爾摩沙遊艇飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "福爾摩沙遊艇酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1554296",
+"name": "台南老爺行旅",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台南老爺行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "76224676",
+"name": "捷絲旅 台南虎山館",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "捷絲旅 台南虎山館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "117147541",
+"name": "綉溪安平飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "綉溪安平",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "927448",
+"name": "台南晶英酒店",
+"city": "台南",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台南晶英酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "60937917",
+"name": "煙波大飯店台南館",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "煙波大飯店台南館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "134556571",
+"name": "劇院酒店-台南成功館",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.62,
+"off_guess": "煙波大飯店台南館"
+},
+{
+"hid": "812583",
+"name": "台南遠東香格里拉",
+"city": "台南",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台南遠東香格里拉",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "15827250",
+"name": "雀客藏居台南永康",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "雀客藏居 台南永康",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "926595",
+"name": "台糖長榮飯店（台南）",
+"city": "台南",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "台糖長榮酒店(台南)",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "19550000",
+"name": "夏都城旅安平館",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "夏都城旅安平館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1213323",
+"name": "台南大飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台南大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1182365",
+"name": "家新大飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "家新大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1209067",
+"name": "台南富信大飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富信大飯店",
+"off_star": 4,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1209130",
+"name": "台南富華大飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富華大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "13694821",
+"name": "台南榮興金鬱金香飯店",
+"city": "台南",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "榮興金鬱金香酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "121952999",
+"name": "高雄日航飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "高雄日航酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1213975",
+"name": "高雄富驛時尚飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富驛時尚酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "109239263",
+"name": "福容徠旅高雄",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福容徠旅 高雄",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "6485010",
+"name": "德立莊（高雄博愛館）",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.46,
+"off_guess": "城市商旅德立莊博愛館"
+},
+{
+"hid": "1233006",
+"name": "高雄Hotel Dùa住飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.7,
+"off_guess": "都會HOTEL dùa"
+},
+{
+"hid": "98052422",
+"name": "好地方飯店六合館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "好地方飯店六合館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "4612899",
+"name": "捷絲旅（高雄站前館）",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.55,
+"off_guess": "捷絲旅高雄站前館"
+},
+{
+"hid": "701684",
+"name": "高雄漢來大飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "漢來大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "62489516",
+"name": "JÒHŌ HOTEL酒店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "JÒHŌ HOTEL",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "100920732",
+"name": "承億飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "承億酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1063709",
+"name": "捷絲旅高雄中正館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "捷絲旅高雄中正館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "8721479",
+"name": "帕可麗飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "帕可麗酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "22260305",
+"name": "高雄比歐緻居",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "比歐緻居",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "120739578",
+"name": "天成逸旅-舶寓高雄",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "天成逸旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "7932167",
+"name": "喜迎旅店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "喜迎旅店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "890379",
+"name": "高雄福華大飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "高雄福華大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "992053",
+"name": "福容大飯店高雄店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福容大飯店 高雄",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "804395",
+"name": "京城大飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "京城大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "907030",
+"name": "高雄互舍飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "互舍酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "18479938",
+"name": "鈞怡大飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "鈞怡大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "8194467",
+"name": "水京棧國際飯店(H2O HOTEL)",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "水京棧國際酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "88831611",
+"name": "CU HOTEL西悠巢旅高雄館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.61,
+"off_guess": "西悠巢旅高雄車站館"
+},
+{
+"hid": "2985883",
+"name": "和逸飯店 高雄中山館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "和逸‧高雄中山館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.88
+},
+{
+"hid": "890221",
+"name": "高雄翰品飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.67,
+"off_guess": "高雄萬豪酒店"
+},
+{
+"hid": "890373",
+"name": "寒軒國際大飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "寒軒國際大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1066362",
+"name": "鮪魚家族飯店-高雄館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "鮪魚家族飯店高雄館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "6407886",
+"name": "頭等艙飯店高雄‧站前館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "頭等艙飯店─站前館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.89
+},
+{
+"hid": "136062287",
+"name": "高雄鉑麗國際飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "高雄鉑麗國際飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "106979821",
+"name": "佑煦行旅",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "佑煦行旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "23695308",
+"name": "華園大飯店草衙館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "華園大飯店草衙館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1181974",
+"name": "高雄河堤國際商旅",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "河堤國際商旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "118035997",
+"name": "河堤漫旅-自立館",
+"city": "高雄",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "河堤漫旅自立館",
+"off_star": 3,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "6529236",
+"name": "高雄中央公園英迪格飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "高雄中央公園英迪格酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "82601608",
+"name": "高雄洲際飯店",
+"city": "高雄",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "高雄洲際酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "15227369",
+"name": "村却國際溫泉飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "村却國際溫泉酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1001027",
+"name": "礁溪老爺飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "礁溪老爺酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "35597305",
+"name": "品文旅礁溪",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.6,
+"off_guess": "品文旅一館"
+},
+{
+"hid": "9882363",
+"name": "礁溪麒麟飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "礁溪麒麟酒店",
+"off_star": 4,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "9240454",
+"name": "礁溪寒沐酒店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "礁溪寒沐酒店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1255405",
+"name": "宜蘭礁溪長榮鳳凰飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "長榮鳳凰酒店(礁溪)",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "105848720",
+"name": "風華度假飯店-礁溪館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "風華渡假酒店-礁溪館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.89
+},
+{
+"hid": "23695364",
+"name": "煙波大飯店宜蘭館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "煙波大飯店宜蘭館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "19831171",
+"name": "山形閣",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "山形閣",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "115940890",
+"name": "了了礁溪",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "了了 礁溪",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "5673745",
+"name": "礁溪晶泉丰旅",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "晶泉丰旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "5703599",
+"name": "煙波大飯店蘇澳四季雙泉館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "煙波大飯店蘇澳館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.78
+},
+{
+"hid": "133534126",
+"name": "T&C 民宿",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "T&C 民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "19829988",
+"name": "宜蘭綠之庭民宿",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.73,
+"off_guess": "蘭庭民宿"
+},
+{
+"hid": "71327915",
+"name": "蘭陽烏石港海景飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "蘭陽烏石港海景酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1409399",
+"name": "捷絲旅宜蘭礁溪館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "捷絲旅礁溪館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.86
+},
+{
+"hid": "54796506",
+"name": "藏闊渡假會館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.62,
+"off_guess": "波卡拉渡假會館"
+},
+{
+"hid": "1182177",
+"name": "冠翔泉旅",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "冠翔泉旅",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "116623633",
+"name": "鴝花甜點民宿",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "鴝花甜點民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "88510321",
+"name": "雀客童媽吉親子旅館",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "雀客童媽吉親子旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "85386737",
+"name": "烏石港 OA HOTEL",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "連大烏石港度假村OA Hotel",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.8
+},
+{
+"hid": "1228759",
+"name": "北方札特North Zart宜蘭民宿",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "北方札特",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "107766972",
+"name": "葛瑪蘭之星飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "葛瑪蘭之星飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "18078541",
+"name": "宜蘭中天溫泉渡假飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "中天溫泉渡假飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "23157761",
+"name": "宜蘭礁溪福朋喜來登飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "宜蘭礁溪福朋喜來登酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "9730264",
+"name": "宜蘭力麗威斯汀度假飯店",
+"city": "宜蘭",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "宜蘭力麗威斯汀度假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "801388",
+"name": "美侖大飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "美侖大飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1006095",
+"name": "花蓮富野渡假飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "花蓮富野渡假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "70815501",
+"name": "煙波花蓮太魯閣",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.74,
+"off_guess": "煙波大飯店花蓮太魯閣沁海館"
+},
+{
+"hid": "1053801",
+"name": "煙波大飯店花蓮館",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "煙波大飯店花蓮館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1053873",
+"name": "捷絲旅（花蓮中正館）",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.55,
+"off_guess": "捷絲旅花蓮中正館"
+},
+{
+"hid": "83071075",
+"name": "煙波花時間 花蓮",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "煙波花時間  花蓮",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "953464",
+"name": "經典假日飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "經典假日飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1006091",
+"name": "福容大飯店花蓮",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福容大飯店  花蓮",
+"off_star": 4,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "980273",
+"name": "花蓮藍天麗池飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "藍天麗池飯店二館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.75
+},
+{
+"hid": "14222213",
+"name": "福康飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "名達福康大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "117635235",
+"name": "花蓮潔西艾美渡假飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "花蓮潔西艾美渡假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2387299",
+"name": "花蓮假期飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "花蓮假期飯店",
+"off_star": 3,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "929093",
+"name": "七星潭星海民宿｜寵物友善",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "七星潭星海民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "801436",
+"name": "花蓮太魯閣晶英飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "太魯閣晶英酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "29830472",
+"name": "秧悦美地度假飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "秧悦美地度假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "5910336",
+"name": "花蓮斯圖亞特海洋莊園",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "斯圖亞特海洋莊園民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 0.8
+},
+{
+"hid": "855078",
+"name": "花蓮阿思瑪麗景大飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "阿思瑪麗景大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1109645",
+"name": "勤天大飯店-花蓮館",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "勤天大飯店－花蓮館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "96411491",
+"name": "品悅文旅-免費停車場、免費特斯拉充電、近東大門夜市",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.29,
+"off_guess": "品悅文旅旅館"
+},
+{
+"hid": "1006089",
+"name": "花蓮理想大地渡假飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "理想大地渡假飯店",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "6148434",
+"name": "花蓮星晟棧渡假飯店",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "星晟棧渡假飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "3917229",
+"name": "花蓮松邑莊園",
+"city": "花蓮",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.67,
+"off_guess": "松邑莊園民宿"
+},
+{
+"hid": "1699804",
+"name": "台東桂田喜來登飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台東桂田喜來登酒店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "1006097",
+"name": "知本老爺飯店（2026/9月重新開幕）",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "知本老爺大酒店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "5622467",
+"name": "台東南豐鐵花棧",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "台東南豐鐵花棧",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "810622",
+"name": "知本金聯世紀飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "知本金聯世紀酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "7591713",
+"name": "THE GAYA HOTEL 潮渡假飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "THE GAYA HOTEL",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1210439",
+"name": "台東沐泉民宿",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "沐泉民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1121387",
+"name": "台東娜路彎大酒店",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "娜路彎大酒店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1137386",
+"name": "日暉國際渡假村",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "日暉國際渡假村",
+"off_star": 5,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2606941",
+"name": "趣淘漫旅-台東 凱撒飯店連鎖",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "趣淘漫旅-台東",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "4374352",
+"name": "台東凱旋星光飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "凱旋星光酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1009352",
+"name": "鮪魚家族飯店-台東館",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "鮪魚家族飯店-台東館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "2615633",
+"name": "知本芙儷渡假飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "知本芙儷渡假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "45833600",
+"name": "台東禾風新棧度假飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "禾風新棧度假飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1204635",
+"name": "富野溫泉休閒會館",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "富野溫泉休閒會館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1006101",
+"name": "鹿鳴溫泉飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "鹿鳴溫泉酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1703371",
+"name": "台東樂樂日暉溫泉飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "樂樂日暉溫泉酒店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1609594",
+"name": "台東願井民宿",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "願井民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1137395",
+"name": "台東娜路彎花園酒店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "娜路彎花園酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "64025693",
+"name": "立麗大飯店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "立麗大酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1319264",
+"name": "台東富野渡假飯店-精誠店",
+"city": "台東",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "台東富野渡假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "752701",
+"name": "墾丁凱撒大飯店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "凱撒大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "128056748",
+"name": "墾丁Hotel dúa旅館",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "聯上墾丁Hotel dúa旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "827930",
+"name": "墾丁亞曼達會館",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "墾丁亞曼達會館",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1195159",
+"name": "屏東墾丁華泰瑞苑",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "華泰瑞苑",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "7690620",
+"name": "墾丁怡灣渡假飯店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "墾丁怡灣渡假酒店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "107508872",
+"name": "泊思．紅柴居",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "泊思‧紅柴居旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1117198",
+"name": "墾丁H會館",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "H會館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.75
+},
+{
+"hid": "982128",
+"name": "墾丁夏都沙灘飯店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "墾丁夏都沙灘酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "4691202",
+"name": "墾丁巴里巴里VILLA民宿",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.64,
+"off_guess": "悅夏Villa民宿"
+},
+{
+"hid": "890558",
+"name": "墾丁福華渡假飯店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "墾丁福華渡假飯店",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "80958231",
+"name": "同合農科商務會館",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "同合農科商務會館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "17096424",
+"name": "墾丁後灣發宅民宿",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "墾丁後灣發宅民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "19832537",
+"name": "曼波・大宅門  精緻旅店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.62,
+"off_guess": "大宅門渡假旅店"
+},
+{
+"hid": "1194088",
+"name": "河堤墾丁渡假飯店",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "河堤墾丁渡假酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "28561449",
+"name": "屏東嵐翎白砂渡假莊園",
+"city": "屏東墾丁",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.5,
+"off_guess": "嵐翎白砂民宿"
+},
+{
+"hid": "111539026",
+"name": "日月潭力麗溫德姆溫泉飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "日月潭力麗溫德姆溫泉酒店",
+"off_star": 5,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "1871688",
+"name": "冠月精品旅館",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "冠月精品旅館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "111574964",
+"name": "福容徠旅水里",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "福容徠旅 水里",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1200297",
+"name": "南投日月潭涵碧樓飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "涵碧樓大飯店",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "1011745",
+"name": "力麗日月潭哲園會館",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.62,
+"off_guess": "力麗哲園-日潭館"
+},
+{
+"hid": "1307504",
+"name": "雲品溫泉飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "雲品溫泉酒店日月潭",
+"off_star": 5,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "132204558",
+"name": "日月潭金鬱金香飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.71,
+"off_guess": "日月潭大飯店"
+},
+{
+"hid": "68260949",
+"name": "觀日品月",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "觀日品月渡假旅店",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1068655",
+"name": "南投清境老英格蘭莊園",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 2,
+"off_name": "老英格蘭莊園",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "801290",
+"name": "南投日月潭晶澤",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.5,
+"off_guess": "日月潭大飯店"
+},
+{
+"hid": "106917421",
+"name": "遊獵羊灣",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "Deer Chaser 溪頭遊獵羊灣",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "1226143",
+"name": "Hemma俬宅",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "Hemma俬宅",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "127012229",
+"name": "埔里春天度假村",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "埔里春天度假村",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1068958",
+"name": "日月潭映涵渡假飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "映涵渡假飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1011747",
+"name": "力麗哲園飯店-月潭館",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "力麗哲園-月潭館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.88
+},
+{
+"hid": "1196133",
+"name": "力麗哲園南投日潭館",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "力麗哲園-日潭館",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 0.88
+},
+{
+"hid": "19830051",
+"name": "南投集集16號民宿",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "集集16號民宿",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "859021",
+"name": "日月潭大飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "日月潭大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "106092572",
+"name": "遊獵行腳",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": "遊獵行腳會館",
+"off_star": 0,
+"off_class": [
+4
+],
+"match": 1.0
+},
+{
+"hid": "112489788",
+"name": "森堡萊夫莊園",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.67,
+"off_guess": "森堡萊夫民宿"
+},
+{
+"hid": "986715",
+"name": "溪頭福華渡假飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "溪頭福華渡假飯店-漢光樓",
+"off_star": 4,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1111471",
+"name": "南投清境霞飛音樂城堡",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.67,
+"off_guess": "霞飛音樂城堡民宿"
+},
+{
+"hid": "840835",
+"name": "印象北歐莊園俱樂部",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.38,
+"off_guess": "能高俱樂部民宿"
+},
+{
+"hid": "123250159",
+"name": "漢來日月行館",
+"city": "南投",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "漢來日月行館",
+"off_star": 0,
+"off_class": [
+1
+],
+"match": 1.0
+},
+{
+"hid": "926549",
+"name": "日月潭馥麗溫泉大飯店",
+"city": "南投",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "馥麗溫泉大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "54652128",
+"name": "嘉義長榮文苑飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "長榮文苑酒店（嘉義）",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1585276",
+"name": "嘉義阿里山賓館",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "阿里山賓館(歷史館)",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "63411741",
+"name": "棒棒積木飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "棒棒積木飯店（親子館）",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "1306783",
+"name": "阿里山梅園樓觀景飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "梅園樓觀景飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "102340701",
+"name": "阿里山英迪格飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 5.0,
+"trip_type": 1,
+"off_name": "阿里山英迪格酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "135441368",
+"name": "雲登景觀飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": null,
+"match": 0.5,
+"off_guess": "嘉義觀止飯店"
+},
+{
+"hid": "1171696",
+"name": "仁義湖岸大飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "仁義湖岸大酒店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "25217071",
+"name": "嘉義這裡民宿",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.67,
+"off_guess": "嘉義旅人民宿"
+},
+{
+"hid": "1341833",
+"name": "嘉義番路名都觀光渡假大飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "名都觀光渡假大飯店",
+"off_star": 0,
+"off_class": [
+2
+],
+"match": 1.0
+},
+{
+"hid": "126700066",
+"name": "沐正農場木一館",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 2,
+"off_name": null,
+"match": 0.62,
+"off_guess": "沐正農場民宿"
+},
+{
+"hid": "1113057",
+"name": "阿里山東方明珠國際大飯店",
+"city": "嘉義",
+"tw": true,
+"trip_star": 4.0,
+"trip_type": 1,
+"off_name": "阿里山東方明珠國際大飯店",
+"off_star": 0,
+"off_class": [
+3
+],
+"match": 1.0
+},
+{
+"hid": "994584",
+"name": "池袋陽光城王子飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993510",
+"name": "帝國飯店 東京",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "22564082",
+"name": "澀谷Stream飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "32621197",
+"name": "三井花園飯店銀座五丁目",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "3103999",
+"name": "里士滿東京Schole高級飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "16039956",
+"name": "The HOTEL Well-hub Haneda",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "994929",
+"name": "東京灣有明華盛頓飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "688271",
+"name": "東京王子大飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "3095695",
+"name": "東京銀座大和魯內精選飯店（2026年4月煥新開業）",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "49507702",
+"name": "維拉芳泉東京有明大飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "135675361",
+"name": "Minn 品川 East",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "993892",
+"name": "新宿格蘭貝爾飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "686243",
+"name": "東京淺草豪景飯店（客房於2026年10月翻新完畢）",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "686236",
+"name": "日暮裡藝術飯店 朗伍德",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136492190",
+"name": "Tokyo Ikebukuro Hotel",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688231",
+"name": "東京半藏門蒙特利飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "34011678",
+"name": "The Blossom 日比谷",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "6347584",
+"name": "東京六本木雷姆飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "994528",
+"name": "秋葉原華盛頓飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1330921",
+"name": "JR東日本大都會大飯店丸之內",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "25098022",
+"name": "日本橋箱崎斯佩里亞旅館",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "688168",
+"name": "MYSTAYS御茶之水會議中心飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "688424",
+"name": "東京秋葉原雷姆飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "76219489",
+"name": "銀座多美迎高級天然溫泉飯店（多美迎・御宿野乃 飯店集團）",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "28147898",
+"name": "東京蒲田東方快捷飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136360068",
+"name": "Study House INN",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "135803705",
+"name": "Minn 兩國",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688395",
+"name": "東京赤阪蒙特利飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "134498515",
+"name": "寅飯店 芝",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688169",
+"name": "東京北野飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688381",
+"name": "三井花園飯店銀座普米爾",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688249",
+"name": "東京芝賽萊斯廷飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "83067673",
+"name": "東京灣拉維斯塔飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "25457200",
+"name": "東京日本橋濱町飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "133893154",
+"name": "Dash Living 淺草 South",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "42171789",
+"name": "東京銀座雷姆普拉斯飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1489108",
+"name": "JR東日本大都會大飯店池袋",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688263",
+"name": "東京羽田日航城市飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "130230216",
+"name": "東京兜町凱悅嘉薈飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "124993050",
+"name": "YOTEL東京銀座飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1683161",
+"name": "千禧 三井花園飯店 東京 / 銀座",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "109252248",
+"name": "JR東日本大都會大飯店東京羽田",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "12255760",
+"name": "銀座名鐵穆瑟飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "737054",
+"name": "東京汐留芬迪別墅大飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "52320512",
+"name": "三井花園飯店豐洲普米爾 / 東京",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688419",
+"name": "都市中心飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "36831581",
+"name": "東京錦系町樂天城市飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "42510513",
+"name": "東京豐洲JAL城飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1438372",
+"name": "東京銀座蒙特利飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "3065830",
+"name": "東京新大谷飯店-禪高級商務套房",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "102592177",
+"name": "東京淺草筑波快速船舶飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "17015534",
+"name": "三井花園飯店日本橋普米爾 / 東京",
+"city": "東京",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "136126432",
+"name": "SAIEI HOTEL 日暮裡獨棟別墅",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688235",
+"name": "東京兩國第ー飯店",
+"city": "東京",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "5816633",
+"name": "大阪心齋橋橋樑飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "123078966",
+"name": "阪急大阪格蘭龍仕柏飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "18432546",
+"name": "一五大阪難波黑門飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "17472239",
+"name": "大阪東心齋橋微笑飯店PREMIUM",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "63006776",
+"name": "大阪曾提斯飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "120734892",
+"name": "希爾頓大阪梅田 Canopy",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "63326122",
+"name": "大阪梅田Intergate飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "5782369",
+"name": "御宿 野乃 溫泉飯店ー大阪難波",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "105497615",
+"name": "b&天下茶屋店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "39031025",
+"name": "大阪東急卓越飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "107956768",
+"name": "大阪華爾道夫",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "28123097",
+"name": "DEL style 大阪心齋橋飯店 by 大和ROYNET",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1483463",
+"name": "三井花園飯店大阪普米爾（2027/2/26三井花園大阪中之島普米爾）",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "70991959",
+"name": "京阪天滿橋站前飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993284",
+"name": "大阪都喜來登飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "8466371",
+"name": "日本橋水晶飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136486042",
+"name": "Vivo Osaka - Luxury Serviced Apartments",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688209",
+"name": "大阪日航飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "37082416",
+"name": "阪急大阪龍仕柏飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "11235847",
+"name": "微笑飯店PREMIUM大阪本町",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "58601292",
+"name": "日和飯店大阪新世界",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "688103",
+"name": "洲至奢選大阪麗嘉皇家飯店（洲際飯店集團旗下）",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "92816062",
+"name": "大阪梅田-維拉芳泉大飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "44640804",
+"name": "東急stay大阪本町飯店 御堂筋心齋橋",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "480887",
+"name": "大阪格蘭比亞大飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "21868895",
+"name": "大阪黑門水晶飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "102347890",
+"name": "捷絲旅大阪心齋橋館",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1836788",
+"name": "大阪洲際飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688216",
+"name": "大阪蒙特利格拉斯米爾飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "132844947",
+"name": "大門飯店大阪 by HULIC",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "82209872",
+"name": "大阪雷本飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "39464065",
+"name": "大阪本町利夫利飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136100162",
+"name": "Minn 難波西",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "4064224",
+"name": "大阪難波相鐵 Grand Fresa",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "35103581",
+"name": "難波大國町索比亞爾飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "99513876",
+"name": "京阪難波格蘭德飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "48903776",
+"name": "THE 皇家花園飯店 ICONIC 大阪御堂筋",
+"city": "大阪",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "688204",
+"name": "大阪十字飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "132248293",
+"name": "ANCHORED by RIHGA Osaka Namba",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "117491238",
+"name": "威利納精選飯店ー大阪難波",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "10836901",
+"name": "溫泉大阪逸之彩飯店日本橋",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "17502427",
+"name": "格蘭比亞大阪維斯奇歐飯店",
+"city": "大阪",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "81449722",
+"name": "THE 皇家花園飯店 Iconic 京都",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "71512514",
+"name": "京都丸太町曼迪設計飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "52661643",
+"name": "天然溫泉 蓮花之湯 御宿野乃京都七條",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "104937999",
+"name": "京都阿拉飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "70404607",
+"name": "京都東山希爾頓逸林飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "25658991",
+"name": "京都千年飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "737157",
+"name": "京都八條 都飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136563969",
+"name": "棕櫚京都四條烏丸飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "21889398",
+"name": "京都烏丸五條京王普雷利亞飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "107955554",
+"name": "希爾頓京都",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "4389735",
+"name": "近鐵京都站都城市飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "58272526",
+"name": "京都高瀨川休雷克蓋特飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "49506293",
+"name": "麗嘉GLAN京都飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "706094",
+"name": "京都四條烏丸大和ROYNET飯店（2026年3月14日重新開業）",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "133163095",
+"name": "京都琥珀公寓飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "88815812",
+"name": "四條河原町溫泉 空庭Terrace京都",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "72560526",
+"name": "Agora 京都烏丸",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "42370779",
+"name": "京都柏悅飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "132494848",
+"name": "喜織飯店室町通",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "82304923",
+"name": "京都東山東急飯店-泛太平洋飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "60988361",
+"name": "京都梅小路皇家花園飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "7603652",
+"name": "京都索拉利亞西鐵尊貴飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "129035569",
+"name": "HANARE by Tokyu Stay 京都三條",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "134056403",
+"name": "喜織飯店寺町",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "115179210",
+"name": "三井花園飯店京都三條普米爾",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "52845134",
+"name": "京都梅小路波特爾飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "38451751",
+"name": "京都好自然飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "136535133",
+"name": "悠・偕隱",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "1437724",
+"name": "三井花園飯店 京都四條",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "2804041",
+"name": "Urban精選飯店京都二條",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "737147",
+"name": "烏丸京都飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "737160",
+"name": "京都世紀飯店",
+"city": "京都",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "29772917",
+"name": "三井花園飯店福岡祇園",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705197",
+"name": "博多都飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "25048207",
+"name": "福岡天神東急STAY飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "49507812",
+"name": "福岡蒙特利飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "50226986",
+"name": "福岡一五別墅",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "133038213",
+"name": "BASE LAYER HOTEL 福岡",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "123756775",
+"name": "福岡休雷克蓋特飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "56699615",
+"name": "三井花園飯店福岡中洲",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136572433",
+"name": "故事博多飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "132039780",
+"name": "Asuite Hakata by ASUMIRU",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "703900",
+"name": "福岡君悅大飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "68686982",
+"name": "福岡天神日航都市飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "131827888",
+"name": "福岡王子飯店百道濱",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "105845907",
+"name": "西鐵飯店 Croom博多 祇園櫛田神社前",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "67572095",
+"name": "福岡天神 昆特薩飯店 Comic&Books",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "38934428",
+"name": "The Blossom 博多 Premier",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705228",
+"name": "皇宮飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "134969582",
+"name": "Moat Inside Hakata",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "993536",
+"name": "MYSTAYS 福岡天神南飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "25098057",
+"name": "福岡博多站東方飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705193",
+"name": "東急博多卓越大飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "6505478",
+"name": "福岡蒙特埃馬納飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705253",
+"name": "博多新大谷飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "133471532",
+"name": "BOUNCEE by RIHGA Fukuoka Hakata",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705213",
+"name": "博多雷索爾特里尼蒂飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705320",
+"name": "福岡山頂度假村飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "705534",
+"name": "多米博多祇園飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "103101862",
+"name": "THE皇家花園 Canvas 福岡中洲",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "48010031",
+"name": "特拉德博多飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "42737572",
+"name": "福岡天神南金特薩飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993535",
+"name": "福岡日航飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "47758200",
+"name": "福岡基礎飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705248",
+"name": "福岡日光西鐵飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705526",
+"name": "福岡大倉飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "134012402",
+"name": "&Here福岡博多飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705244",
+"name": "福岡蒙特利拉蘇瑞飯店",
+"city": "福岡",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "109048419",
+"name": "皇家公園飯店名古屋標誌",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "93970929",
+"name": "名古屋榮科科飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "5086203",
+"name": "三井花園飯店名古屋普米爾",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "57048188",
+"name": "名古屋日航尚格飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "926345",
+"name": "名古屋萬豪飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "107956393",
+"name": "康萊德名古屋",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "846836",
+"name": "THE 皇家花園 CANVAS 名古屋",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "44185521",
+"name": "京阪名古屋飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "23209885",
+"name": "西鐵飯店Croom名古屋",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "8344318",
+"name": "名古屋JR門樓飯店（JR東海飯店集團）",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "704095",
+"name": "名鐵大飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1642810",
+"name": "名古屋美居飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "25195212",
+"name": "名古屋錦日航都市飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "926338",
+"name": "名古屋希爾頓飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "106371325",
+"name": "TIAD 飯店，傲途格精選",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "18026699",
+"name": "坎帕納名古屋船飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "3293807",
+"name": "名古屋The Strings飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "8654077",
+"name": "名古屋王子大飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "83354825",
+"name": "名古屋萬怡飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "703775",
+"name": "名古屋觀光飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "18026695",
+"name": "Vessel Inn榮站前",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "131716735",
+"name": "住一名古屋榮店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "1676808",
+"name": "公主花園飯店榮",
+"city": "名古屋",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "703777",
+"name": "東急名古屋大飯店",
+"city": "名古屋",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "993365",
+"name": "札幌京王廣場飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "129923417",
+"name": "THE GATE HOTEL札幌 by HULIC",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "111414778",
+"name": "札幌STREAM飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "72005271",
+"name": "札幌定製飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "124300563",
+"name": "格蘭貝爾札幌飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "134858480",
+"name": "札幌凱悅尚萃飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "705159",
+"name": "札幌JR大廈日航飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "49334869",
+"name": "三井花園飯店札幌西",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136004676",
+"name": "Edgewater Terrace 211",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "31315741",
+"name": "船舶花園薄野飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "41629389",
+"name": "定山溪常青藤木屋",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "52762809",
+"name": "札幌站前Forza飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "92381544",
+"name": "大和魯內飯店札幌中島公園",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "62987948",
+"name": "札幌索拉利亞西鐵飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993393",
+"name": "札幌東急REI飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "72213523",
+"name": "札幌格蘭貝爾狸小路飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993416",
+"name": "札幌王子飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "1454486",
+"name": "札幌蒙特利埃德爾霍夫飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "705299",
+"name": "MYSTAYS札幌中島公園飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136006038",
+"name": "NOBLE 202",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "1500571",
+"name": "札幌花園宮殿",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705328",
+"name": "Vessel Inn札幌中島公園飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "112955989",
+"name": "札幌埃米恩飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705841",
+"name": "札幌大通公園景觀飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "106458555",
+"name": "新札幌柔婕閣飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "31315743",
+"name": "京王普雷利亞飯店札幌",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1061749",
+"name": "北海道札幌多美迎高級飯店（多美迎・御宿野乃 飯店集團）",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "993399",
+"name": "格拉斯麗札幌飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "703370",
+"name": "札幌十字飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "124724922",
+"name": "暖雪 札幌",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "9147711",
+"name": "karaksa hotel 札幌",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "2140193",
+"name": "定山溪景飯店",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "110660433",
+"name": "札幌創成飯店 - 美憬閣系列",
+"city": "札幌",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "136605252",
+"name": "ETHER 101",
+"city": "札幌",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "2612287",
+"name": "沖繩那霸凱悅飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "48683994",
+"name": "那霸安迪魯飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "128473319",
+"name": "那霸皇家公園飯店標誌性",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "7420938",
+"name": "JR九州Blossom飯店那霸",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "45987505",
+"name": "東急STAY沖繩那霸飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "926342",
+"name": "那霸希爾頓逸林飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "705366",
+"name": "那霸國際通大和ROYNET飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1819533",
+"name": "沖繩港景飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "35953012",
+"name": "嘉新飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "68564677",
+"name": "那霸Hewitt度假村",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "3645542",
+"name": "那霸遙索爾水療中心飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1500207",
+"name": "琉球Orion那霸國際通飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "22257228",
+"name": "INFINISIS NAHA SHURIJO  by 休伊特度假村",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "113004908",
+"name": "那霸歌町大和Roynet PREMIER飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "759848",
+"name": "沖繩那霸Loisir飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "128771047",
+"name": "THE NEST那霸",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "125806568",
+"name": "南門飯店沖繩 那霸泊港（直連泊港碼頭）",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "48522063",
+"name": "那霸雞尾酒飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "76283604",
+"name": "星野集團 OMO5 沖繩那霸",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "703654",
+"name": "沖繩娜哈納飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "124581577",
+"name": "沖繩那霸柔婕閣飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "49846896",
+"name": "那霸斯特拉特飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1572595",
+"name": "沖繩那霸美居飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "85268320",
+"name": "那霸西Nest飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "77293542",
+"name": "那霸三神大飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "88966589",
+"name": "那霸格蘭康索爾飯店",
+"city": "沖繩那霸",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "3147171",
+"name": "首爾明洞相鐵喜普樂吉飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "14186936",
+"name": "樂天L7弘大飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "67428348",
+"name": "首爾明洞朝昕福朋喜來登飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "29407997",
+"name": "LOTTE L7 江南",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "81074621",
+"name": "首爾麻浦魯內飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "56815170",
+"name": "新羅舒泰三星 COEX中心飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "1005077",
+"name": "天空花園飯店東大門1號店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "17312071",
+"name": "首爾萬楓飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "21908084",
+"name": "首爾弘大智選假日飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "134508161",
+"name": "OstelloMaree",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "135628569",
+"name": "Stay Naroo 701 : City Terrace Suite",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "20286662",
+"name": "格拉斯麗首爾飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "6651308",
+"name": "九樹帕那斯首爾明洞 2",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "103945877",
+"name": "九樹ROKAUS精品飯店首爾龍山",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "5033399",
+"name": "首爾明洞voco",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136529212",
+"name": "[CHOI'S SEOUL] 2室4床 / 南山景觀氛圍民宿",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "5242733",
+"name": "天空花園東大門帝宮店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "2601921",
+"name": "明洞東方飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "135529523",
+"name": "首爾東大門美居大使飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "108411380",
+"name": "HOMES Stay 明洞",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "9496973",
+"name": "宜必思尚品首爾龍山區大使飯店 - 首爾龍城",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "73711899",
+"name": "索菲特首爾大使飯店和服務式公寓",
+"city": "首爾",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "13961857",
+"name": "格萊德江南COEX中心飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "136258563",
+"name": "設計師首爾江南地區飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "988588",
+"name": "江南貝斯特韋斯特精品飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "687631",
+"name": "三井飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "124189292",
+"name": "首爾 MAGOK 美居大使飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "759721",
+"name": "新首爾飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "105675525",
+"name": "樂集體-江南SAC Signity",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "118765869",
+"name": "UH Suite 首爾德壽宮飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "2600709",
+"name": "麻浦新羅舒泰飯店 （弘大）",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "988513",
+"name": "天空花園飯店明洞中心店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "124518009",
+"name": "紐布朗中心明洞飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "57079911",
+"name": "弘大美居大使首爾飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "136316845",
+"name": "K-Stay(Seoul,Hongdae,Two-room, Large king bed)",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "2022146",
+"name": "首爾東大門相鐵喜普樂吉飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "927838",
+"name": "宜必思首爾仁寺洞大使飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "2848471",
+"name": "首爾明洞索拉利亞西鐵飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1465483",
+"name": "首爾奧林匹克花園飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1986649",
+"name": "首爾伯努伊飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "136037327",
+"name": "Seoul Stay (Gwangjin)",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "688535",
+"name": "首爾拉卡薩飯店",
+"city": "首爾",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "118354608",
+"name": "L7海雲台樂天飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "121046220",
+"name": "釜山海云台中心彩鴻飯店公寓",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "7074941",
+"name": "新羅舒泰飯店釜山海雲台",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "126900751",
+"name": "SOTA 套房 釜山 西面",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "101931576",
+"name": "釜山連接海洋飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "113752161",
+"name": "釜山維拉久安納帝飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "19636528",
+"name": "釜山站ASTI飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "123834897",
+"name": "UH Continental 中心點飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "136533599",
+"name": "DAJEOUNG STAY",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "122082191",
+"name": "艾爾莫門託松島公寓飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "121860859",
+"name": "海雲台大道飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "4396607",
+"name": "阿爾班飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "132620392",
+"name": "NewCZ 南浦飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "106364543",
+"name": "過去的好時光飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "19517030",
+"name": "釜山樂天飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "83246612",
+"name": "格里芬灣飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "117378170",
+"name": "釜山松島海灘城市住宿飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "992194",
+"name": "釜山威斯汀朝昕飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "135260761",
+"name": "Jeonpo: Ongeol",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "8531773",
+"name": "釜山海雲台溫德姆華美達安可飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "31099521",
+"name": "拉瓦爾斯飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "3330161",
+"name": "海雲台貝斯特韋斯特飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "5612401",
+"name": "GNB飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "113514136",
+"name": "釜山溫德姆至尊飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 1
+},
+{
+"hid": "133800130",
+"name": "Matie 釜山港灣城飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 0
+},
+{
+"hid": "120855712",
+"name": "紐CZ海雲台雷西登斯",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "136528830",
+"name": "Yuraon Stay",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "133399783",
+"name": "海雲台SONO Felice宮殿",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1460900",
+"name": "釜山大道飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "41842181",
+"name": "阿瓦尼中央飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 1
+},
+{
+"hid": "64962715",
+"name": "釜山迎武遊行飯店-海雲台海灘",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "711069",
+"name": "海雲臺中心飯店",
+"city": "釜山",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "114683087",
+"name": "濟州博爾頓飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "64242246",
+"name": "濟州君悅飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 0
+},
+{
+"hid": "4548893",
+"name": "濟州島麗晶海洋飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1371704",
+"name": "天空花園飯店濟州1號店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1385458",
+"name": "樂天城市濟州機場飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "117574171",
+"name": "新羅舒泰普拉斯濟州梨湖田屋海濱飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "8426826",
+"name": "鹹德格洛斯特飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "100386385",
+"name": "琥珀璞山度假村濟州",
+"city": "濟州",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 0
+},
+{
+"hid": "988281",
+"name": "濟州島梅生格萊德飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 5.0,
+"trip_type": 0
+},
+{
+"hid": "1875914",
+"name": "濟州機場新羅舒泰飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "71938305",
+"name": "濟州文蒂莫飯店及公寓",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "33619165",
+"name": "濟州島美輪美奐飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "100054655",
+"name": "濟州鹹德海灘住宿飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "6633704",
+"name": "口哨雲雀飯店濟州",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "5297681",
+"name": "濟州中心城飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "992231",
+"name": "濟州島海洋套房飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "7090954",
+"name": "濟州格洛斯特飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "109337892",
+"name": "錦繡大飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "131609135",
+"name": "Jeju Bongsung Noeul Dam",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 2
+},
+{
+"hid": "2098321",
+"name": "濟州貝斯特韋斯特飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "76551788",
+"name": "濟州中央公園公寓飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+},
+{
+"hid": "1979830",
+"name": "格拉貝爾飯店",
+"city": "濟州",
+"tw": false,
+"trip_star": 4.0,
+"trip_type": 0
+}
+]
