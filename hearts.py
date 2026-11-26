@@ -331,7 +331,7 @@ def main():
             break
         time.sleep(1)
     cl["pending"] = left if NTFY_TOPIC else []
-    if left:
+    if left and NTFY_TOPIC:
         log(f"有 {len(left)} 則通知沒送出，下次再送")
 
     # 3. 排行（目前暫停：雲端讀到的是美國排行）
