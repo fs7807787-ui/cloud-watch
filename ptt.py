@@ -39,7 +39,8 @@ def get(url):
 
 
 def entries(board):
-    x = get(f"https://www.ptt.cc/atom/{board}.xml")
+    # 不加參數會拿到好幾個小時前的快取版本，加上時間參數才是最新的
+    x = get(f"https://www.ptt.cc/atom/{board}.xml?t={int(time.time())}")
     out = []
     for e in re.findall(r"<entry>(.*?)</entry>", x, re.S):
         title = html.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<title[^>]*>(.*?)</title>", e, re.S) or [None, ""])[1])).strip()
