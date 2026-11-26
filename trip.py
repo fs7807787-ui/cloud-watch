@@ -40,7 +40,8 @@ NTFY_TOPIC = os.environ.get("NTFY_BUG_TOPIC", "").strip()
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
 KEEP = 30            # 每家飯店每個日期最多保留幾筆價格
 DROP_HIST = 0.40     # 低於自己歷史中位數的 40%（便宜 60%）
-DROP_DATES = 0.35    # 低於其他日期中「最便宜」的 35%（便宜 65%）
+DROP_DATES = 0.15    # 低於其他日期中「最便宜」的 15%（便宜 85%）；平日跟連假本來就可能差 3～5 倍
+EXCLUDE = {"95343288"}   # 手動排除：觀海樓海景大飯店（Trip.com 標四星，實際是三星）
 TZ = dt.timezone(dt.timedelta(hours=8))
 
 
@@ -104,6 +105,23 @@ def parse(html):
     return out
 
 
+TAIWAN = {617, 7662, 7570, 3849, 3847, 720, 7614, 6954, 3848, 5589, 7524, 650358}
+
+
+def star_bad(cid, hid, name, star):
+    """不符合四星以上就回傳原因。Trip.com 的 starType：1＝飯店星級，2＝Trip.com 自己評的（多半是民宿、公寓），0＝沒標。"""
+    stars, stype = star
+    if hid in EXCLUDE:
+        return "手動排除"
+    if stars < 4:
+        return f"只有 {stars:g} 星"
+    if stype == 2:
+        return "四星是 Trip.com 自己評的，不是飯店星級"
+    if cid in TAIWAN and stype != 1:
+        return "台灣飯店沒有標星級"
+    return None
+
+
 def dates(today):
     ds = [(today + dt.timedelta(days=n)).isoformat() for n in DAYS_AHEAD]
     ds += [d for d in FIXED_DATES if d > today.isoformat()]
@@ -143,7 +161,7 @@ def main():
     for h in H.values():
         for k in [k for k in h["p"] if k[:10] <= today.isoformat() or "|" not in k]:
             del h["p"][k]
-    alerts, seen_total = [], 0
+    alerts, seen_total, excluded = [], 0, set()
     jobs = [(cid, d) for cid in CITIES for d in dates(today)]
 
     def fetch(job):
@@ -167,7 +185,14 @@ def main():
         if st != 200 or not items:
             log(f"  {cname} {d}：HTTP {st}，{len(items)} 家")
         run = by_city.setdefault(cid, {})
-        for hid, name, price, bed in items:
+        for hid, name, price, bed, star in items:
+            why_not = star_bad(cid, hid, name, star)
+            if why_not:
+                if hid in H:
+                    log(f"  排除 {name}：{why_not}")
+                    del H[hid]
+                excluded.add(name)
+                continue
             run.setdefault((hid, bed), {})[d] = price
             h = H.setdefault(hid, {"n": name, "c": cname, "p": {}})
             h["n"], h["c"] = name, cname
@@ -196,6 +221,8 @@ def main():
                 # 同一種床型，要比其他所有日期中最便宜的還便宜 65% 以上，才當成異常
                 if price <= low * DROP_DATES and not any(a[0] == hid and a[3] == d for a in alerts):
                     alerts.append((hid, H[hid]["n"], cname, d, price, f"同房型（{bed}）其他日期最便宜也要 TWD{low:,.0f}，這天便宜 {1 - price / low:.0%}"))
+    if excluded:
+        log(f"這次排除 {len(excluded)} 家不是四星以上的：" + "、".join(sorted(excluded)[:40]))
     if seen_total == 0:
         log("⚠ 這次一家飯店都沒讀到，可能是 Trip.com 改版或擋住了")
     # 通知（24 小時內同一家同一天不重複）
