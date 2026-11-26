@@ -29,6 +29,8 @@ RANK_ENABLED = os.environ.get("RANKS") == "1"
 CLOUD_START = 1795658000000      # 雲端版開始的時間（2026/11/26 10:00 左右）
 RANK_DEPTH = 1800                # 排行查到第幾名
 RANK_KEEP = 300                  # 排行紀錄最多保留幾筆
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "").strip()
+PAGE_URL = "https://fs7807787-ui.github.io/cloud-watch/"
 Q = "query W($i:ID!,$t:ShopProductType!){wishStatus(input:{id:$i,productType:$t}){wishCount}}"
 RANK_URLS = {
     "S": ["/stickershop/showcase/top_creators/zh-Hant?page={p}"],
@@ -122,6 +124,59 @@ def wish(kind, pid):
         return int(json.loads(txt)["data"]["wishStatus"]["wishCount"])
     except Exception:
         return None
+
+
+def ntfy(title, message, priority=3):
+    """用 JSON 發 ntfy（中文標題不會出問題），確認真的送到才算成功；失敗會重試。"""
+    if not NTFY_TOPIC:
+        log("還沒設定 NTFY_TOPIC，這次不發通知")
+        return False
+    body = json.dumps({"topic": NTFY_TOPIC, "title": title, "message": message,
+                       "priority": priority, "click": PAGE_URL}).encode()
+    for i in range(4):
+        try:
+            req = urllib.request.Request("https://ntfy.sh/", data=body,
+                                         headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                if json.loads(r.read().decode()).get("id"):
+                    log("通知已送出：", title)
+                    return True
+        except urllib.error.HTTPError as e:
+            log(f"ntfy 回應 HTTP {e.code}，稍後重試")
+        except Exception as e:
+            log("ntfy 連線失敗：", repr(e))
+        time.sleep(5 * (i + 1))
+    return False
+
+
+def tw_midnight_ms(now):
+    """台灣時間今天 00:00 的時間戳（毫秒）。"""
+    day = (now // 1000 + 8 * 3600) // 86400
+    return (day * 86400 - 8 * 3600) * 1000
+
+
+def heart_message(S, before, after, now):
+    """照原本電腦版的格式：標題「♥ +N　總共 X」，內容逐組列出，最後一行今天累計。"""
+    names = {s["id"]: s["name"] for s in S["sets"]}
+    diffs = sorted(((k, after[k] - before[k], after[k]) for k in after
+                    if k in before and after[k] != before[k]), key=lambda x: -x[1])
+    if not diffs:
+        return None
+    total = sum(after.values())
+    n = sum(d for _, d, _ in diffs)
+    snaps = sorted(S["snaps"], key=lambda x: x["t"])
+    base = {}
+    for sn in snaps:
+        if sn["t"] < tw_midnight_ms(now):
+            base.update(sn["c"])
+    today = total - sum(base.values()) if base else n
+    sign = lambda d: f"+{d}" if d >= 0 else f"−{-d}"
+    title = f"♥ {sign(n)}　總共 {total:,}"
+    lines = [f"{names.get(k, k)}　{sign(d)}（共 {v:,}）" for k, d, v in diffs[:12]]
+    if len(diffs) > 12:
+        lines.append(f"……另外 {len(diffs) - 12} 組也有變化")
+    lines.append(f"—— 今天累計 {sign(today)} ♥")
+    return title, "\n".join(lines)
 
 
 def carried(snaps):
@@ -248,17 +303,36 @@ def main():
         save(S)
         log("全部作品都讀不到愛心數")
         sys.exit(1)
+    before = dict(cur)
     if c:
         S["snaps"].append({"t": now, "c": c})
     compact_old(S, now)
     S["lastCheck"] = S["lastBeat"] = now
     total = sum(carried(S["snaps"]).values())
-    hidden = [sets[k]["name"] for k in sets if k not in listed_keys]
+    hidden = [sets[k]["name"] for k in sets if k not in listed_keys] if listed else S.get("cloud", {}).get("notListed", [])
     S["cloud"] = dict(S.get("cloud", {}), lastRun=now, ok=ok, failed=bad, notListed=hidden, error="")
     log(f"讀到 {ok}/{len(targets)} 組，{len(c)} 組有變化，總愛心 {total}")
     if bad:
         log("讀不到：", bad)
-    log(f"沒出現在作者頁的 {len(hidden)} 組：", hidden)
+    log(f"沒出現在作者頁的 {len(hidden)} 組：", hidden) if listed else log("作者頁這次讀不到（不影響愛心數）")
+
+    # 通知：先補發上次沒送出去的，再發這次的
+    cl = S.setdefault("cloud", {})
+    pending = cl.get("pending") or []
+    msg = heart_message(S, before, carried(S["snaps"]), now) if c else None
+    if msg:
+        pending.append(list(msg))
+    if os.environ.get("TEST_NTFY") == "1":
+        pending.append(["✅ 雲端愛心通知測試", f"雲端版已經可以發通知了。目前總愛心 {total:,}，讀到 {ok} 組。\n點這則通知會打開新的監控網頁。"])
+    left = []
+    for i, (t_, m_) in enumerate(pending[-10:]):
+        if not ntfy(t_, m_):
+            left = pending[-10:][i:]
+            break
+        time.sleep(1)
+    cl["pending"] = left if NTFY_TOPIC else []
+    if left:
+        log(f"有 {len(left)} 則通知沒送出，下次再送")
 
     # 3. 排行（目前暫停：雲端讀到的是美國排行）
     # 刪掉雲端第一次執行時存下的錯誤排行紀錄（美國排行，裡面沒有你的作品）
