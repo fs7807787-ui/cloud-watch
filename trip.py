@@ -109,24 +109,83 @@ TAIWAN = {617, 7662, 7570, 3849, 3847, 720, 7614, 6954, 3848, 5589, 7524, 650358
 
 
 NOT_HOTEL = re.compile(r"民宿|villa|別墅|公寓|套房|apartment|俬宅|獨棟|stay\b|house|寵物友善|\d{3}\s*$|\d室\d床", re.I)
+OFFICIAL_FILE = os.environ.get("OFFICIAL_FILE", "data/tw_official.json")
+TW_COUNTY = {"台北": ["臺北市"], "新北": ["新北市"], "桃園": ["桃園市"], "台中": ["臺中市"], "台南": ["臺南市"], "高雄": ["高雄市"],
+             "宜蘭": ["宜蘭縣"], "花蓮": ["花蓮縣"], "台東": ["臺東縣"], "屏東墾丁": ["屏東縣"], "南投": ["南投縣"], "嘉義": ["嘉義市", "嘉義縣"]}
+try:
+    _OFF = json.load(open(OFFICIAL_FILE, encoding="utf-8"))
+except Exception:
+    _OFF = []
+_OFF_BY = {}
+for _x in _OFF:
+    _OFF_BY.setdefault(_x["c"], []).append(_x)
+
+
+def _norm_strict(s):
+    s = s.replace("臺", "台").replace("酒店", "飯店").replace("大飯店", "飯店").replace("旅店", "飯店")
+    s = re.sub(r"[（(].*?[）)]", "", s)
+    return re.sub(r"[^\w]", "", s).lower()
+
+
+def _norm_loose(s):
+    s = s.replace("臺", "台")
+    s = re.sub(r"[（(].*?[）)]|[-－|｜].*$", "", s)
+    s = re.sub(r"^(台北|新北|桃園|台中|台南|高雄|宜蘭|花蓮|台東|屏東|墾丁|南投|嘉義|清境|日月潭)+", "", s)
+    s = re.sub(r"(國際|觀光|渡假|度假|大)?(酒店|飯店|旅店|旅館|民宿|會館|莊園|商旅)", "", s)
+    return re.sub(r"[^\w]", "", s).lower()
+
+
+def _match(city, name, norm):
+    import difflib
+    n, best, score = norm(name), None, 0.0
+    for cty in TW_COUNTY.get(city, []):
+        for x in _OFF_BY.get(cty, []):
+            m = norm(x["n"])
+            r = 1.0 if (n and m and (n in m or m in n) and min(len(n), len(m)) >= 4) else difflib.SequenceMatcher(None, n, m).ratio()
+            if r > score:
+                best, score = x, r
+    return best if score >= 0.75 else None
+
+
+def official(city, name):
+    """在觀光署資料裡找同縣市的同一家。名稱嚴格比對找得到就用；
+    找不到時用寬鬆比對（去掉地名、飯店／民宿等字），但只拿來認出民宿。"""
+    o = _match(city, name, _norm_strict)
+    if o:
+        return o
+    o = _match(city, name, _norm_loose)
+    return o if o and o["k"] == 4 else None
 
 
 def star_bad(cid, hid, name, star):
-    """不符合四星以上就回傳原因。
-    Trip.com 的 starType：1＝飯店星級，2＝Trip.com 自己評的，0＝沒標。
-    台灣：1 和 2 都收（煙波花時間這類四星飯店是 2），但名字看起來是民宿、公寓的不收。
-    日本、韓國：2 多半是公寓、日租套房，不收。"""
+    """不符合四星以上就回傳原因，符合回傳 None。
+    台灣：先看觀光署官方資料
+      - 有官方星級（全台約 160 家）→ 以官方為準，四星以上才收
+      - 官方登記是民宿 → 不收（民宿不能參加星級評鑑）
+      - 國際觀光旅館、一般觀光旅館 → 收
+      - 一般旅館、官方資料找不到 → 看 Trip.com 標示（四星以上、名字不像民宿）
+    日本、韓國：沒有可用的官方資料，看 Trip.com 的飯店星級；Trip.com 自評的（多半是公寓）不收。"""
     stars, stype = star
     if hid in EXCLUDE:
         return "手動排除"
-    if stars < 4:
-        return f"只有 {stars:g} 星"
     if NOT_HOTEL.search(name):
         return "看起來是民宿或公寓，不是飯店"
-    if stype == 2 and cid not in TAIWAN:
+    if cid in TAIWAN:
+        o = official(CITIES[cid], name) if _OFF else None
+        if o:
+            if o["s"]:
+                return None if o["s"] >= 4 else f"官方星級只有 {o['s']} 星（{o['n']}）"
+            if o["k"] == 4:
+                return f"官方登記是民宿（{o['n']}）"
+            if o["k"] in (1, 2):
+                return None
+        if stars < 4:
+            return f"Trip.com 只標 {stars:g} 星"
+        return None if stype in (1, 2) else "沒有標星級"
+    if stars < 4:
+        return f"只有 {stars:g} 星"
+    if stype == 2:
         return "四星是 Trip.com 自己評的（多半是公寓），不是飯店星級"
-    if cid in TAIWAN and stype not in (1, 2):
-        return "台灣飯店沒有標星級"
     return None
 
 
