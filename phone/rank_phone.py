@@ -9,6 +9,7 @@
 
 其他：
     python3 rank_phone.py --test     只檢查、不存（看地區、排行、特斯拉）
+    python3 rank_phone.py --sites    測試各訂房網站、特斯拉從這支手機讀不讀得到
 
 只用 Python 標準函式庫。
 """
@@ -161,8 +162,48 @@ def tesla():
         log("特斯拉測試：資料介面 HTTP %s、網頁 HTTP %s %s" % (st, st2, "（被擋）" if st2 == 403 else ""))
 
 
+SITES = [
+    ("特斯拉 現車", "https://www.tesla.com/zh_TW/inventory/new/m3"),
+    ("Booking", "https://www.booking.com/searchresults.zh-tw.html?ss=%E5%8F%B0%E5%8C%97&checkin=2026-12-24&checkout=2026-12-25&group_adults=2&no_rooms=1&selected_currency=TWD"),
+    ("Agoda", "https://www.agoda.com/zh-tw/search?city=4951&checkIn=2026-12-24&los=1&rooms=1&adults=2&currency=TWD"),
+    ("trivago", "https://www.trivago.com.tw/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379;dr-20261224-20261225;rc-1-2"),
+    ("Skyscanner 飯店", "https://www.skyscanner.com.tw/hotels/taiwan/taipei-hotels/ci-27547053"),
+    ("Klook 飯店", "https://www.klook.com/zh-TW/hotels/city/19-taipei-hotels/"),
+]
+
+
+def site_test():
+    """只檢查讀不讀得到：遇到驗證頁就記下來，不嘗試繞過；網站規則（robots.txt）不允許的不讀。"""
+    import urllib.robotparser
+    import urllib.parse
+    log("\n—— 網站測試（從這支手機的網路）——")
+    for name, url in SITES:
+        u = urllib.parse.urlparse(url)
+        rp = urllib.robotparser.RobotFileParser(u.scheme + "://" + u.netloc + "/robots.txt")
+        try:
+            rp.read()
+            ok = rp.can_fetch("*", url)
+        except Exception:
+            ok = True
+        if not ok:
+            log("%s：網站規則不允許程式讀取，跳過" % name)
+            continue
+        st, h = get(url, tries=1, headers={"Accept": "text/html"})
+        low = h.lower()
+        prices = re.findall(r"(?:NT\$|TWD)\s?[\d,]{3,}", h)[:3]
+        if any(k in low for k in ("captcha", "access denied", "are you a robot", "challenge", "verify you are human")) or st in (202, 403, 429):
+            log("%s：❌ 被擋或出現驗證（HTTP %s）" % (name, st))
+        elif prices:
+            log("%s：✅ 讀得到價格 %s" % (name, prices))
+        else:
+            log("%s：⚠ 網頁打得開（HTTP %s，%d 字元），但價格是後來才載入，讀不到" % (name, st, len(h)))
+
+
 def main():
     args = sys.argv[1:]
+    if "--sites" in args:
+        site_test()
+        return
     if "--setup" in args:
         tok = input("貼上 GitHub token（github_pat_ 開頭）後按 Enter：").strip()
         m = re.search(r"github_pat_[A-Za-z0-9_]{82}", tok)
