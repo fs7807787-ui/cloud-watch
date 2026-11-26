@@ -270,6 +270,9 @@ def merge_tw_ranks(S, now):
         rec = None
     ranks = S.setdefault("ranks", [])
     last = ranks[-1] if ranks else None
+    # 台灣排行還在確認是不是讀對排行頁，確認前不採用、不發通知（設 TW_RANKS_OK=1 才採用）
+    if os.environ.get("TW_RANKS_OK") != "1":
+        rec = None
     if rec and rec.get("r") is not None and (not last or rec["t"] > last["t"]):
         ranks.append({"t": rec["t"], "depth": rec.get("depth", {}), "r": rec["r"], "src": "tw"})
         if len(ranks) > 300:
@@ -288,7 +291,7 @@ def merge_tw_ranks(S, now):
                     pend.append(["🏆 人氣排行變動", "\n".join(lines)])
     tw = [x for x in ranks if x.get("src") == "tw"]
     if not tw:
-        cl["rankError"] = "雲端讀到的是美國的排行，跟台灣不同；台灣排行（Google Cloud）還沒設定好，下面顯示的是 11/26 早上以前電腦記錄的名次。"
+        cl["rankError"] = "排行名次還在調整中（正在確認要讀哪一個排行頁），下面顯示的是 11/26 早上以前電腦記錄的名次。"
     elif now - tw[-1]["t"] > 3 * 3600 * 1000:
         cl["rankError"] = "台灣排行超過 3 小時沒有更新，Google Cloud 那邊可能停了。"
     else:
