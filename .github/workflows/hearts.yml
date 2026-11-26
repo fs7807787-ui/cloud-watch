@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: hearts
@@ -64,3 +65,11 @@ jobs:
           git add hearts.json
           git commit -qm "愛心紀錄 $(TZ=Asia/Taipei date '+%Y/%m/%d %H:%M')"
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+
+      - name: 每 30 分鐘順便啟動 Trip.com 檢查
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          m=$(date -u +%M); m=$((10#$m % 30))
+          if [ "$m" -lt 10 ]; then gh workflow run trip.yml -R "${{ github.repository }}" && echo "已啟動 Trip.com 檢查"; else echo "這次不用"; fi
