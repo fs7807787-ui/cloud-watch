@@ -1,10 +1,10 @@
-name: 雲端測試（PTT 快取）
+name: 雲端測試（bug 價通知）
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [".github/workflows/test.yml", "probe/**"]
+    paths: [".github/workflows/test-never.yml"]
 
 permissions:
   contents: read
@@ -12,7 +12,20 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - run: git fetch -q --depth=1 origin ptt && python3 probe/star.py
+      - name: 發一則測試通知到 bug 價 topic
+        env:
+          T: ${{ secrets.NTFY_BUG_TOPIC }}
+        run: |
+          if [ -z "$T" ]; then echo "NTFY_BUG_TOPIC 還沒設定"; exit 1; fi
+          echo "topic 長度：${#T}"
+          python3 - <<'PY'
+          import json, os, urllib.request
+          body = {"topic": os.environ["T"], "title": "✅ bug 價通知測試",
+                  "message": "收到這則代表 Trip.com 和 PTT 抓到疑似 bug 價時會通知你。",
+                  "priority": 3, "click": "https://fs7807787-ui.github.io/cloud-watch/"}
+          r = urllib.request.urlopen(urllib.request.Request("https://ntfy.sh/", json.dumps(body).encode(),
+                                     {"Content-Type": "application/json"}), timeout=20)
+          print(r.status, r.read()[:200])
+          PY
