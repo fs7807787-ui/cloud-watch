@@ -256,12 +256,12 @@ def check_ranks(S, now, ids):
         "、".join(f"{k} 第{v}名" for k, v in sorted(r.items(), key=lambda x: x[1]))
 
 
-TW_RANKS = os.environ.get("TW_RANKS_FILE", "data/ranks.json")
+TW_RANKS = os.environ.get("TW_RANKS_FILE", "data/ranks-phone.json")
 TOP = 1000
 
 
 def merge_tw_ranks(S, now):
-    """讀 Google Cloud 台灣機房存的排行（ranks 分支），加進紀錄；進出前 1,000 名就發通知。"""
+    """讀 iPhone 存的台灣排行（ranks 分支 ranks-phone.json），加進紀錄；進出前 1,000 名就發通知。"""
     cl = S.setdefault("cloud", {})
     try:
         with open(TW_RANKS, encoding="utf-8") as f:
@@ -274,7 +274,7 @@ def merge_tw_ranks(S, now):
     if os.environ.get("TW_RANKS_OK") != "1":
         rec = None
     if rec and rec.get("r") is not None and (not last or rec["t"] > last["t"]):
-        ranks.append({"t": rec["t"], "depth": rec.get("depth", {}), "r": rec["r"], "src": "tw"})
+        ranks.append({"t": rec["t"], "depth": rec.get("depth", {}), "r": rec["r"], "src": "phone"})
         if len(ranks) > 300:
             del ranks[:len(ranks) - 300]
         log(f"加入台灣排行（{len(rec['r'])} 組在榜上）")
@@ -289,11 +289,11 @@ def merge_tw_ranks(S, now):
                 ok = ntfy("🏆 人氣排行變動", "\n".join(lines))
                 if not ok and NTFY_TOPIC:
                     pend.append(["🏆 人氣排行變動", "\n".join(lines)])
-    tw = [x for x in ranks if x.get("src") == "tw"]
+    tw = [x for x in ranks if x.get("src") == "phone"]
     if not tw:
-        cl["rankError"] = "雲端主機（GitHub、Google Cloud）都被 LINE 當成海外連線，拿不到台灣排行；下面顯示的是 11/26 早上以前電腦記錄的名次。"
-    elif now - tw[-1]["t"] > 3 * 3600 * 1000:
-        cl["rankError"] = "台灣排行超過 3 小時沒有更新，Google Cloud 那邊可能停了。"
+        cl["rankError"] = "雲端主機被 LINE 當成海外連線，台灣排行改由 iPhone 查（設定中）；下面顯示的是 11/26 早上以前電腦記錄的名次。"
+    elif now - tw[-1]["t"] > 6 * 3600 * 1000:
+        cl["rankError"] = "iPhone 超過 6 小時沒有查排行（半夜或手機沒網路時會暫停），下面是最後一次的名次。"
     else:
         cl.pop("rankError", None)
 
@@ -378,7 +378,7 @@ def main():
 
     # 3. 排行（目前暫停：雲端讀到的是美國排行）
     # 刪掉雲端第一次執行時存下的錯誤排行紀錄（美國排行，裡面沒有你的作品）
-    S["ranks"] = [x for x in S.get("ranks", []) if x["t"] < CLOUD_START or x.get("src") == "tw"]
+    S["ranks"] = [x for x in S.get("ranks", []) if x["t"] < CLOUD_START or x.get("src") == "phone"]
     if RANK_ENABLED:
         try:
             log(check_ranks(S, now, set(sets)))

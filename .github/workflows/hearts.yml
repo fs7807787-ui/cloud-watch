@@ -40,7 +40,7 @@ jobs:
             echo "第一次執行，使用搬過來的舊紀錄"
           fi
           if git fetch --depth=1 origin ranks 2>/dev/null; then
-            git show origin/ranks:ranks.json > data/ranks.json 2>/dev/null && echo "讀到台灣排行" || rm -f data/ranks.json
+            git show origin/ranks:ranks-phone.json > data/ranks-phone.json 2>/dev/null && echo "讀到手機的台灣排行" || rm -f data/ranks-phone.json
           fi
 
       - name: 記錄愛心數
