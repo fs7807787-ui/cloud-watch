@@ -112,7 +112,7 @@ def ntfy(title, msg, click):
     if not NTFY_TOPIC:
         log("（還沒設定 NTFY_BUG_TOPIC，不發通知）", title)
         return False
-    body = json.dumps({"topic": NTFY_TOPIC, "title": title, "message": msg, "priority": 5,
+    body = json.dumps({"topic": NTFY_TOPIC, "title": title, "message": msg, "priority": 3,
                        "tags": ["rotating_light"], "click": click}).encode()
     for i in range(4):
         try:

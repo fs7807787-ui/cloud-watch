@@ -131,7 +131,7 @@ def main():
             if diff is not None and diff < MIN_DIFF:
                 log(f"  略過（價差 {diff} < {MIN_DIFF}）：{title}")
                 continue
-            prio = 4 if diff is not None else 3
+            prio = 3
             msg = f"{title}\n{desc}\n關鍵字：{'、'.join(hit)}\n點通知開 PTT 文章"
             log("  命中：", title, "|", desc)
             if not dry:
