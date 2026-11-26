@@ -15,4 +15,4 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - run: python3 probe/star.py
+      - run: git fetch -q --depth=1 origin ptt && python3 probe/star.py
