@@ -23,6 +23,7 @@ jobs:
         run: |
           mkdir -p data
           if git fetch --depth=1 origin trip 2>/dev/null; then git show origin/trip:trip.json > data/trip.json; echo "讀到之前的紀錄"; else echo "第一次執行"; fi
+          if git fetch --depth=1 origin official 2>/dev/null; then git show origin/official:tw_official.json > data/tw_official.json; echo "讀到官方星級資料"; fi
       - name: 檢查價格
         env:
           NTFY_BUG_TOPIC: ${{ secrets.NTFY_BUG_TOPIC }}

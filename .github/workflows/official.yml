@@ -1,0 +1,27 @@
+name: 台灣官方星級資料（每週更新）
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 19 * * 0"
+  push:
+    branches: [main]
+    paths: ["tools/official.py", ".github/workflows/official.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/official.py
+      - name: 存到 official 分支
+        run: |
+          d=$(mktemp -d); cp tw_official.json "$d/"; cd "$d"
+          git init -q -b official
+          git config user.name "official-bot"; git config user.email "official-bot@users.noreply.github.com"
+          git add tw_official.json; git commit -qm "觀光署旅宿資料 $(TZ=Asia/Taipei date '+%Y/%m/%d')"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" official
