@@ -1,7 +1,10 @@
-name: 雲端測試（LINE 愛心＋特斯拉）
+name: 雲端測試（排行網頁結構）
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/test.yml"]
 
 permissions:
   contents: read
@@ -9,96 +12,55 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
-      - name: 測試 1：LINE STORE 愛心數
-        continue-on-error: true
+      - name: 找排行網頁
         run: |
           python3 - <<'EOF'
-          import json, re, urllib.request, urllib.error
+          import re, json, urllib.request, urllib.error
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
-          A = "5974419"
-          def get(url, data=None, headers=None):
-              h = {"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}
-              h.update(headers or {})
-              req = urllib.request.Request(url, data=data, headers=h)
+          def get(u):
               try:
-                  with urllib.request.urlopen(req, timeout=30) as r:
-                      return r.status, r.read().decode("utf-8", "replace")
+                  with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=30) as r:
+                      return r.status, r.geturl(), r.read().decode("utf-8", "replace")
               except urllib.error.HTTPError as e:
-                  return e.code, e.read().decode("utf-8", "replace")[:300]
+                  return e.code, u, ""
               except Exception as e:
-                  return 0, repr(e)
-          items, seen = [], set()
-          for pg in range(1, 20):
-              st, html = get(f"https://store.line.me/stickershop/author/{A}/zh-Hant?page={pg}")
-              print(f"作品清單第 {pg} 頁：HTTP {st}，{len(html)} 字元")
-              if st != 200:
-                  print(html[:300]); break
-              found = 0
-              for kind, pid in re.findall(r'href="/(sticker|emoji)shop/product/([^/?"]+)', html):
-                  if pid in seen: continue
-                  seen.add(pid); items.append((kind, pid)); found += 1
-              if not found: break
-          print(f"找到 {len(items)} 組作品")
-          Q = "query W($i:ID!,$t:ShopProductType!){wishStatus(input:{id:$i,productType:$t}){wishCount}}"
-          ok = bad = 0
-          for kind, pid in items[:10]:
-              body = json.dumps({"query": Q, "variables": {"i": pid, "t": "STICKER" if kind == "sticker" else "EMOJI"}}).encode()
-              st, txt = get("https://store.line.me/graphql", body, {"Content-Type": "application/json", "Origin": "https://store.line.me", "Referer": f"https://store.line.me/stickershop/author/{A}/zh-Hant"})
-              try:
-                  n = json.loads(txt)["data"]["wishStatus"]["wishCount"]; ok += 1
-                  print(f"  {kind} {pid}：{n} 愛心")
-              except Exception:
-                  bad += 1
-                  print(f"  {kind} {pid}：讀不到（HTTP {st}）{txt[:200]}")
-          print(f"結果：前 10 組讀到 {ok} 組、失敗 {bad} 組")
-          print("LINE_RESULT=" + ("OK" if items and ok else "FAIL"))
+                  return 0, u, repr(e)
+          MINE = {"6a99298d56eaed696b32b4cc": "工作用日常(表情貼)", "37847748": "小勞贖2", "37847760": "小勞贖", "37879094": "小豬豬",
+                  "33303454": "食物含早中晚", "6a3cdcb3b7fb300faf09cd34": "水果攤(表情貼)", "6a05374ed387770800d8241d": "工作用印章(表情貼)"}
+          B = "https://store.line.me"
+          # 1. 首頁和分類頁上所有跟排行、showcase 有關的連結
+          links = set()
+          for path in ["/home/zh-Hant", "/stickershop/home/general/zh-Hant", "/stickershop/home/user/zh-Hant", "/emojishop/home/general/zh-Hant", "/emojishop/home/user/zh-Hant"]:
+              st, url, h = get(B + path)
+              found = sorted(set(re.findall(r'href="([^"]*(?:showcase|ranking|rank|top)[^"]*)"', h)))
+              print(f"{path} → HTTP {st} {url}，相關連結 {len(found)} 個")
+              for f in found[:40]: print("   ", f)
+              links.update(found)
+          # 2. 每個候選排行頁：前 2 頁的作品數、前 5 名、有沒有你的作品
+          cands = sorted(l for l in links if "showcase" in l or "rank" in l)
+          cands += ["/stickershop/showcase/top_creators/zh-Hant", "/emojishop/showcase/top_creators/zh-Hant",
+                    "/stickershop/showcase/new_creators/zh-Hant", "/emojishop/showcase/new_creators/zh-Hant"]
+          seen = set()
+          for c in cands[:16]:
+              c = re.sub(r"^https://store\.line\.me", "", c).split("#")[0]
+              if c in seen or not c.startswith("/"): continue
+              seen.add(c)
+              allids, mine = [], {}
+              for p in range(1, 51):
+                  sep = "&" if "?" in c else "?"
+                  st, url, h = get(B + c + f"{sep}page={p}")
+                  ids = []
+                  for pid in re.findall(r'href="[^"]*?/(?:sticker|emoji)shop/product/([^/?#"]+)', h):
+                      if pid not in ids: ids.append(pid)
+                  new = [i for i in ids if i not in allids]
+                  if p == 1:
+                      names = re.findall(r'data-test="item-name"[^>]*>([^<]{1,40})<', h)[:5]
+                      print(f"\n【{c}】HTTP {st}，第 1 頁 {len(ids)} 組，前 5 名：{names}")
+                  if not new: break
+                  for i in new:
+                      allids.append(i)
+                      if i in MINE and i not in mine: mine[i] = len(allids)
+              print(f"   共讀到 {len(allids)} 組（{p} 頁）；你的作品：" + ("、".join(f"{MINE[k]} 第{v}名" for k, v in mine.items()) or "沒有"))
           EOF
-
-      - name: 測試 2：特斯拉台灣現車（直接讀資料）
-        continue-on-error: true
-        run: |
-          python3 - <<'EOF'
-          import json, urllib.parse, urllib.request, urllib.error
-          UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
-          def get(url):
-              req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json,text/html;q=0.9", "Accept-Language": "zh-TW,zh;q=0.9"})
-              try:
-                  with urllib.request.urlopen(req, timeout=30) as r:
-                      return r.status, r.read().decode("utf-8", "replace")
-              except urllib.error.HTTPError as e:
-                  return e.code, e.read().decode("utf-8", "replace")[:300]
-              except Exception as e:
-                  return 0, repr(e)
-          st, html = get("https://www.tesla.com/zh_TW/inventory/new/m3")
-          print(f"現車網頁：HTTP {st}，{len(html)} 字元；開頭：{html[:150]!r}")
-          for model in ("m3", "my"):
-              q = {"query": {"model": model, "condition": "new", "options": {}, "arrangeby": "Price", "order": "asc", "market": "TW", "language": "zh", "super_region": "asia pacific"}, "offset": 0, "count": 24, "outsideOffset": 0, "outsideSearch": False}
-              for ver in ("v4", "v1"):
-                  url = f"https://www.tesla.com/inventory/api/{ver}/inventory-results?query=" + urllib.parse.quote(json.dumps(q, separators=(",", ":")))
-                  st, txt = get(url)
-                  print(f"{model} 資料介面 {ver}：HTTP {st}，{len(txt)} 字元")
-                  try:
-                      d = json.loads(txt)
-                      res = d.get("results") or []
-                      if isinstance(res, dict): res = res.get("exact") or []
-                      print(f"  共 {d.get('total_matches_found', '?')} 台，這頁 {len(res)} 台")
-                      for c in res[:5]:
-                          print("  ", {k: c.get(k) for k in ("Model", "TrimName", "Year", "Price", "PurchasePrice", "InventoryPrice", "TotalPrice", "CurrencyCode", "VIN") if k in c})
-                      if res: print("  欄位名稱：", sorted(res[0].keys())[:60])
-                      break
-                  except Exception:
-                      print(f"  不是資料格式，開頭：{txt[:200]!r}")
-          EOF
-
-      - name: 測試 3：特斯拉現車網頁（用瀏覽器打開）
-        continue-on-error: true
-        run: |
-          which google-chrome || exit 0
-          timeout 90 google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=20000 --dump-dom "https://www.tesla.com/zh_TW/inventory/new/m3" > page.html 2> chrome.log || true
-          echo "網頁大小：$(wc -c < page.html) 字元"
-          grep -o '<title>[^<]*</title>' page.html | head -1
-          echo "出現 NT\$ 的次數：$(grep -o 'NT\$[0-9,]*' page.html | wc -l)"
-          grep -o 'NT\$[0-9,]*' page.html | head -10
-          grep -iqE 'access denied|captcha|reference #' page.html && echo "⚠ 看起來被擋了（出現拒絕存取或驗證頁）" || true
