@@ -43,7 +43,10 @@ if [ -z "${GH_TOKEN:-}" ]; then
   read -rsp "貼上 GitHub token（github_pat_ 開頭，貼上後畫面不會顯示，直接按 Enter）：" GH_TOKEN </dev/tty; echo
 fi
 GH_TOKEN=$(printf '%s' "$GH_TOKEN" | tr -d '[:space:]')
-echo "收到的 token：${GH_TOKEN:0:11}…（共 ${#GH_TOKEN} 個字）"
+# 不小心貼了好幾次時，只取第一個完整的 token
+FIRST=$(printf '%s' "$GH_TOKEN" | grep -o 'github_pat_[A-Za-z0-9_]\{82\}' | head -1)
+[ -n "$FIRST" ] && GH_TOKEN="$FIRST"
+echo "收到的 token：${GH_TOKEN:0:11}…（共 ${#GH_TOKEN} 個字，正確是 93 個字）"
 case "$GH_TOKEN" in
   github_pat_*|ghp_*) ;;
   "") fail "沒有收到 token（可能沒貼上）。在黑色視窗裡請用 Ctrl+Shift+V 或按滑鼠右鍵 →「貼上」，再按 Enter" ;;

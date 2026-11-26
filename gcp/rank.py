@@ -182,9 +182,11 @@ def main():
         log("  你的作品都不在榜上")
     if not any(depth.values()):
         raise SystemExit("排行讀不到，這次不存")
-    save_to_github({"t": now, "depth": depth, "r": r, "src": "tw"})
+    saved = save_to_github({"t": now, "depth": depth, "r": r, "src": "tw"})
     if os.environ.get("TESLA_TEST") == "1":
         tesla_probe()
+    if not saved:
+        raise SystemExit("排行沒有存到 GitHub（請檢查 token：只勾 cloud-watch、Contents 要 Read and write）")
 
 
 if __name__ == "__main__":
