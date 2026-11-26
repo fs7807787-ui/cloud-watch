@@ -63,8 +63,12 @@ def get(url):
     return 0, ""
 
 
+SKIP_BEDS = ("上下舖", "床位", "宿舍", "膠囊")
+
+
 def parse(html):
-    """從 Next.js 的資料片段取出每家飯店：編號、名稱、價格（新台幣）。"""
+    """從 Next.js 的資料片段取出每家飯店：編號、名稱、2 位大人的總價（新台幣）、床型。
+    上下舖、床位、宿舍這類不算（不是一般客房，容易誤報）。"""
     text = ""
     for m in re.finditer(r"self\.__next_f\.push\((\[.*?\])\)</script>", html, re.S):
         try:
@@ -77,17 +81,24 @@ def parse(html):
         hid = m.group(1)
         if hid in seen:
             continue
-        block = text[m.start():m.start() + 6000]
+        nxt = text.find('"hotelId":"', m.end())
+        block = text[m.start():(nxt if 0 < nxt < m.start() + 12000 else m.start() + 7000)]
         nm = re.search(r'"nameInfo":\{"name":"((?:[^"\\]|\\.)*)"', block)
         pr = re.search(r'"price":(\d+(?:\.\d+)?),"currency":"TWD"', block)
         if not (nm and pr):
             continue
         seen.add(hid)
+        bed = re.search(r'"bedInfo":\{"list":\[[^\]]*\],"contentList":\["([^"]+)"', block)
+        bed = bed.group(1) if bed else "?"
+        if any(k in bed for k in SKIP_BEDS):
+            continue
+        tot = re.search(r'"priceExplanation":"總價：TWD([\d,]+)', block)
+        price = float(tot.group(1).replace(",", "")) if tot else float(pr.group(1))
         try:
             name = json.loads('"' + nm.group(1) + '"')
         except Exception:
             name = nm.group(1)
-        out.append((hid, name.strip("​ "), float(pr.group(1))))
+        out.append((hid, name.strip("\u200b "), price, bed))
     return out
 
 
@@ -128,8 +139,8 @@ def main():
     H = D.setdefault("hotels", {})
     # 過期的入住日期刪掉
     for h in H.values():
-        for d in [d for d in h["p"] if d <= today.isoformat()]:
-            del h["p"][d]
+        for k in [k for k in h["p"] if k[:10] <= today.isoformat() or "|" not in k]:
+            del h["p"][k]
     alerts, seen_total = [], 0
     jobs = [(cid, d) for cid in CITIES for d in dates(today)]
 
@@ -154,34 +165,35 @@ def main():
         if st != 200 or not items:
             log(f"  {cname} {d}：HTTP {st}，{len(items)} 家")
         run = by_city.setdefault(cid, {})
-        for hid, name, price in items:
-            run.setdefault(hid, {})[d] = price
+        for hid, name, price, bed in items:
+            run.setdefault((hid, bed), {})[d] = price
             h = H.setdefault(hid, {"n": name, "c": cname, "p": {}})
             h["n"], h["c"] = name, cname
-            hist = h["p"].get(d, [])
+            key = f"{d}|{bed}"
+            hist = h["p"].get(key, [])
             why = None
             if len(hist) >= 3:
                 med = statistics.median(hist)
                 if price <= med * DROP_HIST:
-                    why = f"比這天平常的 TWD{med:,.0f} 便宜 {1 - price / med:.0%}"
+                    why = f"同房型（{bed}）這天平常 TWD{med:,.0f}，現在便宜 {1 - price / med:.0%}"
                 if 0.08 <= price / med <= 0.12:
-                    why = f"約是平常 TWD{med:,.0f} 的 1/10，疑似少打一個 0"
+                    why = f"約是同房型平常 TWD{med:,.0f} 的 1/10，疑似少打一個 0"
             if why:
                 alerts.append((hid, name, cname, d, price, why))
             hist.append(price)
-            h["p"][d] = hist[-KEEP:]
+            h["p"][key] = hist[-KEEP:]
     # 同一輪不同日期互相比較
     for cid, run in by_city.items():
         cname = CITIES[cid]
-        for hid, byd in run.items():
+        for (hid, bed), byd in run.items():
             if len(byd) < 3:
                 continue
             for d, price in byd.items():
                 others = [v for k, v in byd.items() if k != d]
                 low = min(others)
-                # 要比其他所有日期中最便宜的還便宜 65% 以上，才當成異常（避免連假高價拉高比較基準）
+                # 同一種床型，要比其他所有日期中最便宜的還便宜 65% 以上，才當成異常
                 if price <= low * DROP_DATES and not any(a[0] == hid and a[3] == d for a in alerts):
-                    alerts.append((hid, H[hid]["n"], cname, d, price, f"其他日期最便宜也要 TWD{low:,.0f}，這天便宜 {1 - price / low:.0%}"))
+                    alerts.append((hid, H[hid]["n"], cname, d, price, f"同房型（{bed}）其他日期最便宜也要 TWD{low:,.0f}，這天便宜 {1 - price / low:.0%}"))
     if seen_total == 0:
         log("⚠ 這次一家飯店都沒讀到，可能是 Trip.com 改版或擋住了")
     # 通知（24 小時內同一家同一天不重複）
@@ -195,8 +207,8 @@ def main():
         ci = dt.date.fromisoformat(d)
         click = (f"https://tw.trip.com/hotels/detail/?hotelId={hid}&checkIn={d}"
                  f"&checkOut={(ci + dt.timedelta(days=1)).isoformat()}&adult=2&crn=1&curr=TWD")
-        title = f"🚨 疑似 bug 價 {cname} TWD{price:,.0f}"
-        msg = f"{name}\n入住 {ci.month}/{ci.day}（1 晚，四星以上）\n{why}\n房型可能不同，點通知開 Trip.com 確認"
+        title = f"🚨 疑似 bug 價 {cname} TWD{price:,.0f}（總價）"
+        msg = f"{name}\n入住 {ci.month}/{ci.day}（1 晚，2 位大人總價，四星以上）\n{why}\n點通知開 Trip.com 確認"
         log("異常：", title, "|", msg.replace("\n", " / "))
         if dry or ntfy(title, msg, click):
             A[k] = time.time()
