@@ -1,7 +1,12 @@
 import json, urllib.request, zipfile, io, collections
 raw = urllib.request.urlopen(urllib.request.Request("https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip", headers={"User-Agent": "Mozilla/5.0"}), timeout=120).read()
 z = zipfile.ZipFile(io.BytesIO(raw)); print(z.namelist(), len(raw))
-d = json.loads(z.read(z.namelist()[0]).decode("utf-8-sig"))
+nm = [n for n in z.namelist() if n.lower().endswith(".json")][0]
+b = z.read(nm); print(nm, len(b), b[:200])
+for enc in ("utf-8-sig", "utf-16"):
+    try:
+        d = json.loads(b.decode(enc)); break
+    except Exception as e: print(enc, repr(e)[:100])
 def find_list(o):
     if isinstance(o, list): return o
     for v in o.values():
