@@ -1,4 +1,4 @@
-name: 雲端測試（PTT 更新時間）
+name: 雲端測試（PTT 快取）
 
 on:
   workflow_dispatch:
