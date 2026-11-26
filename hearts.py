@@ -256,6 +256,45 @@ def check_ranks(S, now, ids):
         "、".join(f"{k} 第{v}名" for k, v in sorted(r.items(), key=lambda x: x[1]))
 
 
+TW_RANKS = os.environ.get("TW_RANKS_FILE", "data/ranks.json")
+TOP = 1000
+
+
+def merge_tw_ranks(S, now):
+    """讀 Google Cloud 台灣機房存的排行（ranks 分支），加進紀錄；進出前 1,000 名就發通知。"""
+    cl = S.setdefault("cloud", {})
+    try:
+        with open(TW_RANKS, encoding="utf-8") as f:
+            rec = json.load(f)
+    except Exception:
+        rec = None
+    ranks = S.setdefault("ranks", [])
+    last = ranks[-1] if ranks else None
+    if rec and rec.get("r") is not None and (not last or rec["t"] > last["t"]):
+        ranks.append({"t": rec["t"], "depth": rec.get("depth", {}), "r": rec["r"], "src": "tw"})
+        if len(ranks) > 300:
+            del ranks[:len(ranks) - 300]
+        log(f"加入台灣排行（{len(rec['r'])} 組在榜上）")
+        if last:
+            names = {x["id"]: x["name"] for x in S["sets"]}
+            p0 = {k: v for k, v in last["r"].items() if v <= TOP}
+            p1 = {k: v for k, v in rec["r"].items() if v <= TOP}
+            lines = [f"⬆ 進入前 {TOP}：{names.get(k, k)}（第 {v} 名）" for k, v in sorted(p1.items(), key=lambda x: x[1]) if k not in p0]
+            lines += [f"⬇ 掉出前 {TOP}：{names.get(k, k)}" for k in p0 if k not in p1]
+            if lines:
+                pend = cl.setdefault("pending", [])
+                ok = ntfy("🏆 人氣排行變動", "\n".join(lines))
+                if not ok and NTFY_TOPIC:
+                    pend.append(["🏆 人氣排行變動", "\n".join(lines)])
+    tw = [x for x in ranks if x.get("src") == "tw"]
+    if not tw:
+        cl["rankError"] = "雲端讀到的是美國的排行，跟台灣不同；台灣排行（Google Cloud）還沒設定好，下面顯示的是 11/26 早上以前電腦記錄的名次。"
+    elif now - tw[-1]["t"] > 3 * 3600 * 1000:
+        cl["rankError"] = "台灣排行超過 3 小時沒有更新，Google Cloud 那邊可能停了。"
+    else:
+        cl.pop("rankError", None)
+
+
 def main():
     with open(DATA, encoding="utf-8") as f:
         S = json.load(f)
@@ -343,7 +382,7 @@ def main():
         except Exception as e:
             log("排行發生錯誤：", repr(e))
     else:
-        S.setdefault("cloud", {})["rankError"] = "雲端讀到的是美國的排行，跟台灣不同，所以暫停查詢；下面顯示的是 11/26 早上以前電腦記錄的名次。"
+        merge_tw_ranks(S, now)
     save(S)
 
 

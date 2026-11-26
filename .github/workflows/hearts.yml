@@ -39,12 +39,15 @@ jobs:
           else
             echo "第一次執行，使用搬過來的舊紀錄"
           fi
+          if git fetch --depth=1 origin ranks 2>/dev/null; then
+            git show origin/ranks:ranks.json > data/ranks.json 2>/dev/null && echo "讀到台灣排行" || rm -f data/ranks.json
+          fi
 
       - name: 記錄愛心數
         env:
           RANKS: ${{ github.event.inputs.ranks || '0' }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-          TEST_NTFY: ${{ github.event_name == 'push' && '1' || github.event.inputs.test_ntfy || '0' }}
+          TEST_NTFY: ${{ github.event.inputs.test_ntfy || '0' }}
           FORCE_RANK: ${{ github.event.inputs.ranks || '0' }}
         run: python3 hearts.py
 
