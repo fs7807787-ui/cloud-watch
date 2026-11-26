@@ -1,4 +1,4 @@
-name: 雲端測試（排行網頁結構）
+name: 雲端測試（訂房網站與特斯拉）
 
 on:
   workflow_dispatch:
@@ -12,55 +12,47 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
     steps:
-      - name: 找排行網頁
+      - name: 直接讀網頁
+        continue-on-error: true
         run: |
           python3 - <<'EOF'
-          import re, json, urllib.request, urllib.error
+          import re, urllib.request, urllib.error
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
-          def get(u):
+          T = {
+            "Booking 搜尋": "https://www.booking.com/searchresults.zh-tw.html?ss=%E5%8F%B0%E5%8C%97&checkin=2026-12-24&checkout=2026-12-25&group_adults=2&no_rooms=1&selected_currency=TWD",
+            "Booking 飯店頁": "https://www.booking.com/hotel/tw/grand-hyatt-taipei.zh-tw.html?checkin=2026-12-24&checkout=2026-12-25&group_adults=2&selected_currency=TWD",
+            "Agoda 首頁": "https://www.agoda.com/zh-tw/",
+            "Agoda 搜尋": "https://www.agoda.com/zh-tw/search?city=4951&checkIn=2026-12-24&los=1&rooms=1&adults=2&currency=TWD",
+            "Trip.com 飯店列表": "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&curr=TWD",
+            "Trip.com 首頁": "https://tw.trip.com/",
+            "特斯拉 現車": "https://www.tesla.com/zh_TW/inventory/new/m3",
+          }
+          for name, url in T.items():
+              req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9", "Accept": "text/html,application/xhtml+xml"})
               try:
-                  with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=30) as r:
-                      return r.status, r.geturl(), r.read().decode("utf-8", "replace")
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      st, h = r.status, r.read().decode("utf-8", "replace")
               except urllib.error.HTTPError as e:
-                  return e.code, u, ""
+                  st, h = e.code, e.read().decode("utf-8", "replace")
               except Exception as e:
-                  return 0, u, repr(e)
-          MINE = {"6a99298d56eaed696b32b4cc": "工作用日常(表情貼)", "37847748": "小勞贖2", "37847760": "小勞贖", "37879094": "小豬豬",
-                  "33303454": "食物含早中晚", "6a3cdcb3b7fb300faf09cd34": "水果攤(表情貼)", "6a05374ed387770800d8241d": "工作用印章(表情貼)"}
-          B = "https://store.line.me"
-          # 1. 首頁和分類頁上所有跟排行、showcase 有關的連結
-          links = set()
-          for path in ["/home/zh-Hant", "/stickershop/home/general/zh-Hant", "/stickershop/home/user/zh-Hant", "/emojishop/home/general/zh-Hant", "/emojishop/home/user/zh-Hant"]:
-              st, url, h = get(B + path)
-              found = sorted(set(re.findall(r'href="([^"]*(?:showcase|ranking|rank|top)[^"]*)"', h)))
-              print(f"{path} → HTTP {st} {url}，相關連結 {len(found)} 個")
-              for f in found[:40]: print("   ", f)
-              links.update(found)
-          # 2. 每個候選排行頁：前 2 頁的作品數、前 5 名、有沒有你的作品
-          cands = sorted(l for l in links if "showcase" in l or "rank" in l)
-          cands += ["/stickershop/showcase/top_creators/zh-Hant", "/emojishop/showcase/top_creators/zh-Hant",
-                    "/stickershop/showcase/new_creators/zh-Hant", "/emojishop/showcase/new_creators/zh-Hant"]
-          seen = set()
-          for c in cands[:16]:
-              c = re.sub(r"^https://store\.line\.me", "", c).split("#")[0]
-              if c in seen or not c.startswith("/"): continue
-              seen.add(c)
-              allids, mine = [], {}
-              for p in range(1, 51):
-                  sep = "&" if "?" in c else "?"
-                  st, url, h = get(B + c + f"{sep}page={p}")
-                  ids = []
-                  for pid in re.findall(r'href="[^"]*?/(?:sticker|emoji)shop/product/([^/?#"]+)', h):
-                      if pid not in ids: ids.append(pid)
-                  new = [i for i in ids if i not in allids]
-                  if p == 1:
-                      names = re.findall(r'data-test="item-name"[^>]*>([^<]{1,40})<', h)[:5]
-                      print(f"\n【{c}】HTTP {st}，第 1 頁 {len(ids)} 組，前 5 名：{names}")
-                  if not new: break
-                  for i in new:
-                      allids.append(i)
-                      if i in MINE and i not in mine: mine[i] = len(allids)
-              print(f"   共讀到 {len(allids)} 組（{p} 頁）；你的作品：" + ("、".join(f"{MINE[k]} 第{v}名" for k, v in mine.items()) or "沒有"))
+                  st, h = 0, repr(e)
+              title = (re.search(r"<title[^>]*>([^<]{0,80})", h) or [None, ""])[1].strip()
+              prices = re.findall(r"(?:TWD|NT\$)\s?[\d,]{3,}", h)[:5]
+              flags = [k for k in ("captcha", "Access Denied", "challenge", "robot", "blocked", "verify") if k.lower() in h.lower()]
+              print(f"【{name}】HTTP {st}，{len(h):,} 字元，標題：{title!r}，價格樣本：{prices}，可疑字：{flags}")
           EOF
+
+      - name: 用瀏覽器打開
+        continue-on-error: true
+        run: |
+          for u in \
+            "https://www.booking.com/searchresults.zh-tw.html?ss=%E5%8F%B0%E5%8C%97&checkin=2026-12-24&checkout=2026-12-25&group_adults=2&no_rooms=1&selected_currency=TWD" \
+            "https://www.agoda.com/zh-tw/search?city=4951&checkIn=2026-12-24&los=1&rooms=1&adults=2&currency=TWD" \
+            "https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&curr=TWD"; do
+            timeout 90 google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=25000 --dump-dom "$u" > p.html 2>/dev/null || true
+            echo "【瀏覽器】$(echo "$u" | cut -c9-30)… → $(wc -c < p.html) 字元，標題：$(grep -o '<title[^>]*>[^<]*' p.html | head -1 | sed 's/<title[^>]*>//')"
+            echo "   價格樣本：$(grep -oE '(TWD|NT\$)[ ]?[0-9,]{3,}' p.html | head -5 | tr '\n' ' ')"
+            echo "   可疑字：$(grep -oiE 'captcha|access denied|challenge|are you a robot|blocked' p.html | sort -u | tr '\n' ' ')"
+          done
