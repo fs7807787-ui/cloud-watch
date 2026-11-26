@@ -6,7 +6,7 @@
    只看四星、五星；台灣 12 個地區、日本 7 個城市、韓國 3 個城市
 3. 價格異常就發 ntfy 到 bug 價 topic：
    - 比這家飯店同一日期自己的歷史中位數低 60% 以上（至少要有 3 筆紀錄）
-   - 比這家飯店這一輪其他日期的中位數低 70% 以上（第一次看到也能抓）
+   - 比這家飯店這一輪其他日期中最便宜的還便宜 65% 以上（第一次看到也能抓）
    - 價格約是平常的 1/10（疑似少打一個 0）
 4. 同一家飯店同一個日期 24 小時內只通知一次
 
@@ -40,7 +40,7 @@ NTFY_TOPIC = os.environ.get("NTFY_BUG_TOPIC", "").strip()
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
 KEEP = 30            # 每家飯店每個日期最多保留幾筆價格
 DROP_HIST = 0.40     # 低於自己歷史中位數的 40%（便宜 60%）
-DROP_DATES = 0.30    # 低於其他日期中位數的 30%（便宜 70%）
+DROP_DATES = 0.35    # 低於其他日期中「最便宜」的 35%（便宜 65%）
 TZ = dt.timezone(dt.timedelta(hours=8))
 
 
@@ -178,9 +178,10 @@ def main():
                 continue
             for d, price in byd.items():
                 others = [v for k, v in byd.items() if k != d]
-                med = statistics.median(others)
-                if price <= med * DROP_DATES and not any(a[0] == hid and a[3] == d for a in alerts):
-                    alerts.append((hid, H[hid]["n"], cname, d, price, f"比同一家其他日期的 TWD{med:,.0f} 便宜 {1 - price / med:.0%}"))
+                low = min(others)
+                # 要比其他所有日期中最便宜的還便宜 65% 以上，才當成異常（避免連假高價拉高比較基準）
+                if price <= low * DROP_DATES and not any(a[0] == hid and a[3] == d for a in alerts):
+                    alerts.append((hid, H[hid]["n"], cname, d, price, f"其他日期最便宜也要 TWD{low:,.0f}，這天便宜 {1 - price / low:.0%}"))
     if seen_total == 0:
         log("⚠ 這次一家飯店都沒讀到，可能是 Trip.com 改版或擋住了")
     # 通知（24 小時內同一家同一天不重複）
@@ -195,7 +196,7 @@ def main():
         click = (f"https://tw.trip.com/hotels/detail/?hotelId={hid}&checkIn={d}"
                  f"&checkOut={(ci + dt.timedelta(days=1)).isoformat()}&adult=2&crn=1&curr=TWD")
         title = f"🚨 疑似 bug 價 {cname} TWD{price:,.0f}"
-        msg = f"{name}\n入住 {ci.month}/{ci.day}（1 晚）\n{why}\n點通知開 Trip.com 確認"
+        msg = f"{name}\n入住 {ci.month}/{ci.day}（1 晚，四星以上）\n{why}\n房型可能不同，點通知開 Trip.com 確認"
         log("異常：", title, "|", msg.replace("\n", " / "))
         if dry or ntfy(title, msg, click):
             A[k] = time.time()
