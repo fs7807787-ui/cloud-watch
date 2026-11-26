@@ -108,16 +108,24 @@ def parse(html):
 TAIWAN = {617, 7662, 7570, 3849, 3847, 720, 7614, 6954, 3848, 5589, 7524, 650358}
 
 
+NOT_HOTEL = re.compile(r"民宿|villa|別墅|公寓|套房|apartment|俬宅|獨棟|stay\b|house|寵物友善|\d{3}\s*$|\d室\d床", re.I)
+
+
 def star_bad(cid, hid, name, star):
-    """不符合四星以上就回傳原因。Trip.com 的 starType：1＝飯店星級，2＝Trip.com 自己評的（多半是民宿、公寓），0＝沒標。"""
+    """不符合四星以上就回傳原因。
+    Trip.com 的 starType：1＝飯店星級，2＝Trip.com 自己評的，0＝沒標。
+    台灣：1 和 2 都收（煙波花時間這類四星飯店是 2），但名字看起來是民宿、公寓的不收。
+    日本、韓國：2 多半是公寓、日租套房，不收。"""
     stars, stype = star
     if hid in EXCLUDE:
         return "手動排除"
     if stars < 4:
         return f"只有 {stars:g} 星"
-    if stype == 2:
-        return "四星是 Trip.com 自己評的，不是飯店星級"
-    if cid in TAIWAN and stype != 1:
+    if NOT_HOTEL.search(name):
+        return "看起來是民宿或公寓，不是飯店"
+    if stype == 2 and cid not in TAIWAN:
+        return "四星是 Trip.com 自己評的（多半是公寓），不是飯店星級"
+    if cid in TAIWAN and stype not in (1, 2):
         return "台灣飯店沒有標星級"
     return None
 

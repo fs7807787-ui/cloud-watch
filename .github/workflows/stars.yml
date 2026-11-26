@@ -1,0 +1,25 @@
+name: 飯店星級比對（一次性）
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["probe/stars.py", ".github/workflows/stars.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 probe/stars.py
+      - name: 存到 stars 分支
+        run: |
+          d=$(mktemp -d); cp stars-check.json "$d/"; cd "$d"
+          git init -q -b stars
+          git config user.name "stars-bot"; git config user.email "stars-bot@users.noreply.github.com"
+          git add stars-check.json; git commit -qm "星級比對"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" stars
