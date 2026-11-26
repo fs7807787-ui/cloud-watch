@@ -137,7 +137,50 @@ def tesla_probe():
         log(f"特斯拉測試：HTTP {st}，{'被擋（Access Denied）' if blocked else str(len(html)) + ' 字元'}")
 
 
+def debug():
+    """檢查 LINE 把這台主機當成哪個地區，以及你的作品在哪些排行頁上。"""
+    st, raw = get(f"https://raw.githubusercontent.com/{REPO}/data/hearts.json?t={int(time.time())}")
+    S = json.loads(raw)
+    ids = {s["id"]: s["name"] for s in S["sets"]}
+    for path in ["/stickershop/product/37847748/zh-Hant", "/emojishop/product/6a99298d56eaed696b32b4cc/zh-Hant"]:
+        st, h = get(BASE + path)
+        cur = sorted(set(re.findall(r"(NT\$|US\$|TWD|USD|¥|JPY)", h)))
+        price = re.findall(r'data-test="item-price"[^>]*>([^<]+)<', h)[:1]
+        log(f"商品頁 {path}：HTTP {st}，價格 {price}，出現的幣別 {cur}")
+    n = 0
+    for p in range(1, 20):
+        st, items = list_page(f"/stickershop/author/5974419/zh-Hant?page={p}")
+        if not items:
+            break
+        n += len(items)
+    log(f"作者頁列出 {n} 組（美國看到 115 組、你的監控記 122 組）")
+    for path in ["/emojishop/showcase/top_creators/zh-Hant", "/emojishop/showcase/top/zh-Hant",
+                 "/stickershop/showcase/top_creators/zh-Hant", "/stickershop/showcase/new_top_creators/zh-Hant",
+                 "/stickershop/showcase/top/zh-Hant"]:
+        pos, seen, mine, first = 0, set(), {}, []
+        for p in range(1, 51):
+            st, items = list_page(path + f"?page={p}")
+            new = [x for x in items if x[1] not in seen]
+            if not new:
+                break
+            for kind, pid, name in new:
+                seen.add(pid)
+                pos += 1
+                if len(first) < 3:
+                    first.append(name)
+                k = key(kind, pid)
+                if k in ids and k not in mine:
+                    mine[k] = pos
+            time.sleep(0.3)
+        log(f"【{path}】共 {pos} 名，前 3 名 {first}")
+        log("   你的作品：" + ("、".join(f"{ids[k]} 第{v}名" for k, v in sorted(mine.items(), key=lambda x: x[1])) or "沒有"))
+
+
 def main():
+    if os.environ.get("DEBUG") == "1":
+        st, ipinfo = get("https://ipinfo.io/json", tries=1)
+        log("連線位置：", ipinfo[:200].replace("\n", " "))
+        return debug()
     if not GH_TOKEN:
         raise SystemExit("沒有設定 GH_TOKEN")
     # 自己的連線位置（確認是從台灣連出去）
