@@ -1,0 +1,14 @@
+name: 雲端測試（星級資料）
+on:
+  push:
+    branches: [main]
+    paths: ["probe/**", ".github/workflows/probe.yml"]
+permissions:
+  contents: read
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 probe/star.py
