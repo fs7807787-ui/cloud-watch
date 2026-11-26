@@ -17,26 +17,26 @@ jobs:
       - name: 看 Trip.com 列表頁
         run: |
           python3 - <<'PYEOF'
-          import re, json, urllib.request
+          import re, json, urllib.request, html as H
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
           def get(u):
               with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"}), timeout=40) as r:
                   return r.read().decode("utf-8", "replace")
-          for cid in [617, 720, 228, 219, 734, 274, 359, 58]:
-              h = get(f"https://tw.trip.com/hotels/list?city={cid}&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
-              t = (re.search(r"<title[^>]*>([^<]{0,60})", h) or [0, ""])[1]
-              print(f"city={cid} 標題：{t}；TWD 價格數：{len(re.findall(r'TWD[\d,]{3,}', h))}")
           h = get("https://tw.trip.com/hotels/list?city=617&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
-          scripts = re.findall(r"<script[^>]*>(.*?)</script>", h, re.S)
-          big = sorted(scripts, key=len, reverse=True)[:3]
-          for s in big:
-              print("\n=== script 長度", len(s), "開頭：", s[:200].replace("\n", " "))
-              for k in ["hotelList", "hotelId", "hotelName", "price", "displayPrice", "originPrice", "minPrice", "hotelBasicInfo", "roomInfo"]:
-                  i = s.find('"' + k + '"')
-                  if i >= 0: print(f"  [{k}] …{s[max(0,i-80):i+220]!r}")
-          i = h.find("TWD")
-          print("\n=== 第一個 TWD 附近的 HTML ===\n", h[max(0, i-1500):i+300])
-          ids = re.findall(r'/hotels/[^"\s]*?-hotel-detail-(\d+)', h)
-          print("\n飯店詳細頁連結：", len(ids), ids[:10])
-          print("頁面上的飯店名稱 class 樣本：", re.findall(r'class="([^"]*(?:name|Name)[^"]*)"', h)[:10])
+          i = h.find('class="hotelName"')
+          print("=== 第一張飯店卡片 ===")
+          print(re.sub(r"\s+", " ", h[max(0, i-2500):i+3500]))
+          print("\n=== 卡片數量 ===", h.count('class="hotelName"'))
+          names = [H.unescape(x) for x in re.findall(r'class="hotelName"[^>]*>(?:<[^>]+>)*([^<]+)', h)]
+          print("飯店名稱：", names[:25])
+          for k in ["hotelId", "hotelName", "price", "cityName"]:
+              for pat in ['\\"' + k + '\\":', '"' + k + '":']:
+                  j = h.find(pat)
+                  if j >= 0:
+                      print(f"[{k}] {pat} …", h[j:j+260].replace("\n", " "))
+                      break
+          for cid in [720, 228, 219]:
+              hh = get(f"https://tw.trip.com/hotels/list?city={cid}&checkin=2026/12/24&checkout=2026/12/25&adult=2&crn=1&curr=TWD")
+              nm = [H.unescape(x) for x in re.findall(r'class="hotelName"[^>]*>(?:<[^>]+>)*([^<]+)', hh)][:3]
+              print(f"city={cid} 前 3 家：{nm}")
           PYEOF
