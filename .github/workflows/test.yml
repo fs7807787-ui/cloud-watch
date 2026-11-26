@@ -1,4 +1,4 @@
-name: 雲端測試（trivago 價格）
+name: 雲端測試（公開優惠情報來源）
 
 on:
   workflow_dispatch:
@@ -12,22 +12,36 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - name: trivago
+      - name: 測情報來源
         run: |
           python3 - <<'PYEOF'
-          import urllib.robotparser
-          rp = urllib.robotparser.RobotFileParser("https://www.trivago.com.tw/robots.txt"); rp.read()
-          for path in ["/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379", "/graphql", "/api/v1/", "/zh-Hant-TW/odr/"]:
-              print("robots", path, rp.can_fetch("*", "https://www.trivago.com.tw" + path))
-          import urllib.request
-          print(urllib.request.urlopen(urllib.request.Request("https://www.trivago.com.tw/robots.txt", headers={"User-Agent": "Mozilla/5.0"})).read().decode()[:1500])
+          import re, urllib.request, urllib.error, urllib.robotparser, urllib.parse
+          UA = "Mozilla/5.0 (compatible; personal-deal-alert/1.0)"
+          T = [
+            ("PTT 省錢板 Atom", "https://www.ptt.cc/atom/Lifeismoney.xml"),
+            ("PTT 日旅板 Atom", "https://www.ptt.cc/atom/Japan_Travel.xml"),
+            ("PTT 國旅板 Atom", "https://www.ptt.cc/atom/Tour-Agency.xml"),
+            ("Dcard 省錢板 API", "https://www.dcard.tw/service/api/v2/forums/savemoney/posts?popular=false&limit=30"),
+            ("Slickdeals RSS", "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"),
+            ("Reddit r/errorfare RSS", "https://www.reddit.com/r/errorfare/new/.rss"),
+            ("Secret Flying RSS", "https://www.secretflying.com/feed/"),
+            ("Fly4free RSS", "https://www.fly4free.com/feed/"),
+            ("Google 新聞 RSS（bug 價）", "https://news.google.com/rss/search?q=bug%E5%83%B9&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"),
+          ]
+          for name, url in T:
+              u = urllib.parse.urlparse(url)
+              rp = urllib.robotparser.RobotFileParser(f"{u.scheme}://{u.netloc}/robots.txt")
+              try: rp.read(); ok = rp.can_fetch("*", url)
+              except Exception: ok = "讀不到"
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
+                      st, h = r.status, r.read().decode("utf-8", "replace")
+              except urllib.error.HTTPError as e:
+                  st, h = e.code, ""
+              except Exception as e:
+                  st, h = 0, repr(e)
+              titles = re.findall(r"<title[^>]*>(?:<!\[CDATA\[)?([^<\]]{4,80})", h)[1:4] or re.findall(r'"title":"([^"]{4,60})"', h)[:3]
+              print(f"【{name}】robots：{ok}｜HTTP {st}｜{len(h):,} 字元｜最新標題：{titles}")
           PYEOF
-          U="https://www.trivago.com.tw/zh-Hant-TW/srl/%E5%8F%B0%E5%8C%97?search=200-10379;dr-20261224-20261225;rc-1-2"
-          timeout 120 google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=40000 --dump-dom "$U" > t.html 2>/dev/null || true
-          echo "大小 $(wc -c < t.html)"
-          echo "價格樣本：$(grep -oE '(NT\$|TWD|\$)[ ]?[0-9,]{3,}' t.html | head -20 | tr '\n' ' ')"
-          echo "飯店名稱樣本：$(grep -oE 'data-testid="item-name"[^>]*>[^<]+' t.html | head -8 | sed 's/.*>//' | tr '\n' '|')"
-          echo "可疑字：$(grep -oiE 'captcha|access denied|are you a robot|challenge' t.html | sort -u | tr '\n' ' ')"
-          grep -oE 'data-testid="[a-z-]+"' t.html | sort | uniq -c | sort -rn | head -25
