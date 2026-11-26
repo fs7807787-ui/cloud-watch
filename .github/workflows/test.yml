@@ -1,4 +1,4 @@
-name: 雲端測試（Trip.com 星級統計）
+name: 雲端測試（PTT 更新時間）
 
 on:
   workflow_dispatch:
