@@ -22,6 +22,11 @@ def parse_sky(p):
         out.append((m.group(2), m.group(1)))
     names = re.findall(r'&#34;hotelCode&#34;: &#34;(\d+)&#34;.{0,400}?&#34;name&#34;: \{&#34;en&#34;: &#34;([^&]*)&#34;, &#34;jp&#34;: &#34;([^&]*)&#34;', p)
     return out, [(a, b, c.encode().decode("unicode_escape", "ignore") if "\\u" in c else c) for a, b, c in names]
-for q in ["觀海樓", "Hotel Cloud Riverside", "煙波", "Lakeshore"]:
-    u = "https://www.skygate.co.jp/hotel/list?" + urllib.parse.urlencode({"regionId": "6047811", "hotelName": q, "form": "research_form", "rooms": 1})
-    p = get(u); s, n = parse_sky(p); P(q, s[:6], n[:6])
+for rid, q in [("", "Hilton Taipei Sinban"), ("", "觀海樓"), ("6047811", "Hilton Taipei Sinban"), ("178307", "Hilton"), ("178307", "Hotel")]:
+    u = "https://www.skygate.co.jp/hotel/list?" + urllib.parse.urlencode({"regionId": rid, "hotelName": q, "form": "research_form", "rooms": 1})
+    p = get(u); s_, n = parse_sky(p); P(rid, q, s_[:5])
+    m = re.search(r'&#34;regionId&#34;: &#34;(\d+)&#34;, &#34;name&#34;: \{&#34;short&#34;: \{&#34;en&#34;: &#34;([^&]+)', p); P("   region:", m.groups() if m else None)
+for rid in ["178307", "6140738", "178236", "178293", "180030", "179898"]:
+    p = get(f"https://www.skygate.co.jp/hotel/LIST/{rid}/")
+    m = re.search(r'&#34;name&#34;: \{&#34;short&#34;: \{&#34;en&#34;: &#34;([^&]+)&#34;, &#34;jp&#34;: &#34;[^&]*&#34;\}, &#34;long&#34;: \{&#34;en&#34;: &#34;([^&]+)', p)
+    P(rid, m.groups() if m else re.findall(r"<title>([^<]+)", p)[:1])
