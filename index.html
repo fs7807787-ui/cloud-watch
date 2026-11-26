@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LINE 貼圖愛心監控</title>
+<style>
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1d2320;--mute:#6b736e;--line:#e4e7e3;--g:#06c755;--g2:#e8f8ee;--red:#e5484d;--heart:#ff4d6d}
+@media (prefers-color-scheme:dark){:root{--bg:#121513;--card:#1b1f1c;--ink:#eef1ee;--mute:#9aa39d;--line:#2c322e;--g2:#173322}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:24px 16px 60px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+h1{font-size:24px;margin:0}
+h1 .hrt{color:var(--heart)}
+.sub{color:var(--mute);font-size:13px}
+h2{font-size:16px;margin:0 0 12px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:10px;font:inherit;cursor:pointer}
+.btn:hover{border-color:var(--mute)}
+.btn.pri{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
+.btn.sm{padding:4px 10px;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi .l{color:var(--mute);font-size:13px}
+.kpi .v{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.up{color:var(--g)}.down{color:var(--red)}.flat{color:var(--mute)}
+section{margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:500;font-size:13px;white-space:nowrap}
+td.n,th.n{text-align:right}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.empty{text-align:center;color:var(--mute);padding:30px 10px}
+.chart svg{width:100%;height:auto;display:block}
+.tag{font-size:12px;background:var(--g2);color:var(--g);padding:1px 6px;border-radius:6px;margin-left:6px}
+td.medal,th.medal{width:44px;text-align:center;padding-left:0;padding-right:0}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:13px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;color:var(--mute)}
+.badge.b1{background:linear-gradient(145deg,#ffe082,#f5b400);color:#5c4300;box-shadow:0 1px 3px rgba(245,180,0,.45)}
+.badge.b2{background:linear-gradient(145deg,#eceff1,#b0bec5);color:#37474f;box-shadow:0 1px 3px rgba(120,144,156,.45)}
+.badge.b3{background:linear-gradient(145deg,#f3c39a,#c77b3c);color:#4e2a0a;box-shadow:0 1px 3px rgba(199,123,60,.45)}
+.badge.b4,.badge.b5{background:var(--g2);color:var(--g)}
+td{vertical-align:middle}
+.up,.down{white-space:nowrap}
+a.nm{color:inherit;text-decoration:none}a.nm:hover{text-decoration:underline}
+tr.day td{background:var(--bg);color:var(--mute);font-size:12px;font-weight:600;padding:4px 8px;border-bottom:none}
+td.when{color:var(--mute);font-size:13px;white-space:nowrap;width:1%}
+@media (max-width:600px){.wrap{padding:16px 10px 40px}h1{font-size:20px}.card{padding:12px;border-radius:12px}.kpi .v{font-size:22px}th,td{padding:8px 4px}.hide-sm{display:none}.tag{display:inline-block;margin:2px 0 0 4px;font-size:11px}td.n{white-space:nowrap}h2{font-size:15px}}
+</style>
+</head>
+<body>
+<div id="app"><div class="wrap"><div class="card empty">讀取中…</div></div></div>
+<script>
+(function(){
+const DATA_URL = 'https://raw.githubusercontent.com/fs7807787-ui/cloud-watch/data/hearts.json';
+const SEED_URL = 'data/hearts.json';
+let S = null, loadErr = '', loadedAt = 0;
+let chartRange = '7d', showZero = false, showMoreFeed = false;
+const $app = document.getElementById('app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => (n == null || isNaN(n)) ? '—' : Number(n).toLocaleString('zh-Hant');
+const dt = t => { const d = new Date(t); return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
+const ago = t => { const m = Math.floor((Date.now() - t) / 60000), d = new Date(t), hm = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'), z = new Date(); z.setHours(0,0,0,0); if (m < 1) return '剛剛'; if (m < 60) return m + ' 分鐘前'; if (t >= z.getTime()) return '今天 ' + hm; if (t >= z.getTime() - 86400000) return '昨天 ' + hm; return dt(t); };
+const nmLink = s => s ? (s.url ? `<a class="nm" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)) : '（已刪除的作品）';
+const snapsSorted = () => S.snaps.slice().sort((a,b) => a.t - b.t);
+function carried(snaps){ const acc = {}; return snaps.map(s => { Object.assign(acc, s.c); return Object.assign({}, acc); }); }
+const sum = m => m ? Object.values(m).reduce((a,b) => a + (+b||0), 0) : null;
+function setHist(id, snaps){ return snaps.filter(s => s.c[id] != null).map(s => s.c[id]); }
+function deltaHTML(d){
+  if (d == null) return '<span class="flat">—</span>';
+  if (d > 0) return `<span class="up">▲ ${fmt(d)}</span>`;
+  if (d < 0) return `<span class="down">▼ ${fmt(-d)}</span>`;
+  return '<span class="flat">0</span>';
+}
+function headSub(last){
+  const stale = S.lastCheck && Date.now() - S.lastCheck > 45 * 60000;
+  return `${S.lastCheck ? '最後檢查 ' + ago(S.lastCheck) : ''}${last ? '・最後愛心變化 ' + ago(last.t) : ''}${stale ? '<div style="color:var(--red);font-weight:600;margin-top:4px">⚠ 超過 45 分鐘沒有檢查，雲端記錄可能延遲或出問題了</div>' : ''}${loadErr ? `<div style="color:var(--red);margin-top:4px">${esc(loadErr)}</div>` : ''}`;
+}
+function spark(id, snaps){
+  const pts = setHist(id, snaps);
+  if (pts.length < 2) return '';
+  const w = 90, h = 24, mn = Math.min(...pts), mx = Math.max(...pts), r = mx - mn || 1;
+  const d = pts.map((v,i) => `${(i/(pts.length-1)*w).toFixed(1)},${(h - 2 - (v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline points="${d}" fill="none" stroke="var(--g)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+}
+function chart2(snaps){
+  const allv = carried(snaps).map(sum);
+  let pts = snaps.map((s, i) => ({ t: s.t, v: allv[i] }));
+  const now = Date.now();
+  let from = null;
+  if (chartRange === 'today'){ const d = new Date(); d.setHours(0, 0, 0, 0); from = d.getTime(); }
+  else if (chartRange === '7d') from = now - 7 * 86400000;
+  else if (chartRange === '30d') from = now - 30 * 86400000;
+  if (from != null){ const before = pts.filter(p => p.t < from).pop(); pts = pts.filter(p => p.t >= from); if (before) pts.unshift({ t: from, v: before.v }); }
+  if (pts.length > 300 || (chartRange === 'all' && pts.length > 60)){ const m = new Map(); pts.forEach(p => { const d = new Date(p.t); m.set(d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(), p); }); pts = [...m.values()]; }
+  if (pts.length && pts[pts.length - 1].t < now - 60000) pts.push({ t: now, v: pts[pts.length - 1].v, now: true });
+  if (pts.length < 2) return '<div class="empty">這段期間還沒有足夠的記錄。</div>';
+  const sm = window.innerWidth < 600, W = sm ? 400 : 900, H = sm ? 230 : 240, L = sm ? 44 : 64, R = sm ? 10 : 16, T = 14, B = 30;
+  const vals = pts.map(p => p.v), mn0 = Math.min(...vals), mx0 = Math.max(...vals);
+  const pad = Math.max(1, (mx0 - mn0) * 0.12), mn = Math.max(0, Math.floor(mn0 - pad)), mx = Math.ceil(mx0 + pad);
+  const t0 = pts[0].t, t1 = pts[pts.length - 1].t, tr = (t1 - t0) || 1;
+  const x = t => L + (t - t0) / tr * (W - L - R), y = v => T + (1 - (v - mn) / (mx - mn || 1)) * (H - T - B);
+  let g = '';
+  for (let i = 0; i <= 4; i++){ const v = mn + (mx - mn) * i / 4, yy = y(v); g += `<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="var(--line)"/><text x="${L-8}" y="${yy+4}" text-anchor="end" font-size="12" fill="var(--mute)">${fmt(Math.round(v))}</text>`; }
+  const short = tr < 2 * 86400000;
+  for (let i = 0; i <= 4; i++){ const tt = t0 + tr * i / 4, d = new Date(tt); const lab = short ? String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') : (d.getMonth() + 1) + '/' + d.getDate(); g += `<text x="${x(tt)}" y="${H-10}" text-anchor="${i === 0 ? 'start' : i === 4 ? 'end' : 'middle'}" font-size="12" fill="var(--mute)">${lab}</text>`; }
+  let path = ''; pts.forEach((p, i) => { path += i ? `H${x(p.t).toFixed(1)}V${y(p.v).toFixed(1)}` : `M${x(p.t).toFixed(1)},${y(p.v).toFixed(1)}`; });
+  const area = path + `V${H-B}H${x(t0).toFixed(1)}Z`;
+  window.__cp = { W, pts: pts.map(p => ({ t: p.t, v: p.v, now: p.now, x: x(p.t), y: y(p.v) })) };
+  const dots = pts.length <= 150 ? pts.filter(p => !p.now).map(p => `<circle cx="${x(p.t).toFixed(1)}" cy="${y(p.v).toFixed(1)}" r="3" fill="var(--g)"><title>${dt(p.t)}：${fmt(p.v)}</title></circle>`).join('') : '';
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="總愛心數變化" style="touch-action:pan-y;cursor:crosshair">${g}<path d="${area}" fill="var(--g)" opacity=".1"/><path d="${path}" fill="none" stroke="var(--g)" stroke-width="2.4" stroke-linejoin="round"/>${dots}<line id="cpline" y1="${T}" y2="${H-B}" stroke="var(--mute)" stroke-dasharray="3 3" style="display:none"/><circle id="cpdot" r="5.5" fill="var(--g)" stroke="var(--card)" stroke-width="2" style="display:none"/></svg><div class="sub" id="chartinfo" style="text-align:center;min-height:1.6em;margin-top:4px">點一下或滑過圖表，看各時間點的總愛心數</div>`;
+}
+function bindChart(){
+  const sv = $app.querySelector('.chart svg'), cp = window.__cp; if (!sv || !cp || !cp.pts.length) return;
+  const info = document.getElementById('chartinfo'), dot = sv.querySelector('#cpdot'), ln = sv.querySelector('#cpline'); if (!info || !dot) return;
+  const f = ev => { const r = sv.getBoundingClientRect(), cx = (ev.clientX - r.left) / r.width * cp.W; let b = cp.pts[0]; cp.pts.forEach(p => { if (Math.abs(p.x - cx) < Math.abs(b.x - cx)) b = p; }); dot.setAttribute('cx', b.x); dot.setAttribute('cy', b.y); dot.style.display = ''; ln.setAttribute('x1', b.x); ln.setAttribute('x2', b.x); ln.style.display = ''; info.innerHTML = `<b style="color:var(--ink)">${fmt(b.v)} ♥</b>　${b.now ? '現在' : dt(b.t)}`; };
+  sv.addEventListener('pointermove', f); sv.addEventListener('pointerdown', f);
+}
+
+function render(){
+  if (!S){ $app.innerHTML = `<div class="wrap"><div class="card empty">${esc(loadErr || '讀取中…')}</div></div>`; return; }
+  const snaps = snapsSorted(), last = snaps[snaps.length-1], prev = snaps[snaps.length-2];
+  const car = carried(snaps), curM = car[car.length-1] || {};
+  const tot = sum(car[car.length-1]), ptot = sum(car[car.length-2]);
+  const d0 = new Date(); d0.setHours(0, 0, 0, 0); const t0 = d0.getTime();
+  let bi = -1; snaps.forEach((s, i) => { if (s.t < t0) bi = i; });
+  const fi = snaps.findIndex(s => s.t >= t0);
+  const baseIdx = bi >= 0 ? bi : fi;
+  const todayBase = baseIdx >= 0 ? sum(car[baseIdx]) : null;
+  const todayFrom = bi >= 0 ? '00:00' : (fi >= 0 ? dt(snaps[fi].t).split(' ')[1] : '');
+  const valAt = t => { let k = -1; snaps.forEach((s, i) => { if (s.t <= t) k = i; }); return k >= 0 ? sum(car[k]) : null; };
+  let ybi = -1; snaps.forEach((s, i) => { if (s.t <= t0 - 86400000) ybi = i; }); if (ybi < 0 && snaps.length && snaps[0].t < t0) ybi = 0;
+  let yLine = '';
+  if (ybi >= 0){ const yb = sum(car[ybi]), yAll = valAt(t0 - 1), ys = Date.now() - 86400000 >= snaps[ybi].t ? valAt(Date.now() - 86400000) : null;
+    yLine = `<div class="sub" style="margin-top:4px">${ys != null ? '昨天到這個時間：+' + fmt(ys - yb) + '<br>' : ''}昨天一整天：+${fmt(yAll - yb)}</div>`; }
+  const tracked = S.sets.filter(s => (curM[s.id] || 0) > 0).length;
+  let h = `<div class="wrap"><header><div><h1><span class="hrt">♥</span> LINE 貼圖愛心監控</h1><div class="sub" id="subline">${headSub(last)}</div></div><div class="row"><button class="btn" data-a="reload">重新整理</button></div></header>`;
+  if (snaps.length){
+    h += `<div class="kpis">
+      <div class="card kpi"><div class="l">總愛心數</div><div class="v">${fmt(tot)}</div></div>
+      <div class="card kpi"><div class="l">較上次記錄</div><div class="v">${prev ? deltaHTML(tot - ptot) : '<span class="flat">—</span>'}</div></div>
+      <div class="card kpi"><div class="l">今天增加${todayFrom ? '（' + todayFrom + ' 起）' : ''}</div><div class="v">${todayBase != null ? deltaHTML(tot - todayBase) : '<span class="flat">—</span>'}</div>${yLine}</div>
+      <div class="card kpi"><div class="l">有愛心的作品 / 全部作品</div><div class="v">${tracked} / ${S.sets.length}</div></div>
+    </div>`;
+    const tb = baseIdx >= 0 ? car[baseIdx] : {};
+    const top5 = S.sets.map(s => ({ s, d: (tb[s.id] != null && curM[s.id] != null) ? curM[s.id] - tb[s.id] : 0, v: curM[s.id] })).filter(x => x.d > 0).sort((a, b) => b.d - a.d || (b.v || 0) - (a.v || 0)).slice(0, 5);
+    h += `<section class="card"><h2>🏅 今天愛心增加前五名 <span class="sub" style="font-weight:400">${todayFrom ? '（' + todayFrom + ' 起）' : ''}</span></h2>${top5.length ? `<table><tbody>${top5.map((x, i) => `<tr><td class="medal"><span class="badge b${i + 1}">${i + 1}</span></td><td>${nmLink(x.s)}${x.s.type ? `<span class="tag">${esc(x.s.type)}</span>` : ''}</td><td class="n" style="white-space:nowrap">${deltaHTML(x.d)}</td><td class="n sub" style="white-space:nowrap">共 ${fmt(x.v)}</td></tr>`).join('')}</tbody></table>` : '<div class="sub">今天還沒有作品增加愛心。</div>'}</section>`;
+    const feed = [], y0 = t0 - 86400000;
+    for (let i = snaps.length - 1; i > 0 && feed.length < 400; i--){
+      const prevM = car[i-1];
+      Object.keys(snaps[i].c).forEach(id => { const pv = prevM[id], nv = snaps[i].c[id]; if (pv != null && nv !== pv) feed.push({ t: snaps[i].t, s: S.sets.find(x => x.id === id), d: nv - pv, v: nv }); });
+    }
+    if (feed.length){
+      const main = feed.filter(f => f.t >= y0).slice(0, 40), more = feed.slice(main.length);
+      const dayOf = t => { if (t >= t0) return '今天'; if (t >= y0) return '昨天'; const d = new Date(t); return (d.getMonth() + 1) + '/' + d.getDate(); };
+      const rowsOf = list => list.map((f, k, arr) => { const dl = dayOf(f.t), hd = (k === 0 || dayOf(arr[k - 1].t) !== dl) ? `<tr class="day"><td colspan="4">${dl}</td></tr>` : ''; return hd + `<tr${f.t >= t0 ? '' : ' style="opacity:.6"'}><td class="when">${dt(f.t).slice(-5)}</td><td>${nmLink(f.s)}${f.s && f.s.type ? `<span class="tag">${esc(f.s.type)}</span>` : ''}</td><td class="n" style="white-space:nowrap">${deltaHTML(f.d)}</td><td class="n sub" style="white-space:nowrap">共 ${fmt(f.v)}</td></tr>`; }).join('');
+      h += `<section class="card"><h2>最近的愛心變化 <span class="sub" style="font-weight:400">（今天和昨天，最多 40 筆）</span></h2><table><tbody>${main.length ? rowsOf(main) : '<tr><td class="sub" colspan="4">今天和昨天還沒有變化。</td></tr>'}${showMoreFeed && more.length ? rowsOf(more) : ''}${more.length ? `<tr><td colspan="4" style="text-align:center;padding:10px;border-bottom:none"><button class="btn sm" data-a="togglefeed">${showMoreFeed ? '▲ 收起較早的變化' : '▼ 顯示其他 ' + more.length + ' 筆較早的變化'}</button></td></tr>` : ''}</tbody></table></section>`;
+    }
+    const RK = S.ranks || [];
+    if (RK.length){
+      const LIM = 1000, cut = x => { const o = {}; Object.keys(x.r).forEach(id => { if (x.r[id] <= LIM) o[id] = x.r[id]; }); return { t: x.t, depth: x.depth, r: o }; };
+      const R1 = cut(RK[RK.length - 1]), R0 = RK.length > 1 ? cut(RK[RK.length - 2]) : null;
+      const rids = Object.keys(R1.r).sort((a, b) => R1.r[a] - R1.r[b]);
+      const best = {}; RK.map(cut).forEach(x => Object.keys(x.r).forEach(id => { if (best[id] == null || x.r[id] < best[id]) best[id] = x.r[id]; }));
+      const dropped = R0 ? Object.keys(R0.r).filter(id => R1.r[id] == null) : [];
+      const nm = id => { const s = S.sets.find(x => x.id === id); return s ? esc(s.name) : id; };
+      h += `<section class="card"><h2>人氣排行名次 <span class="sub" style="font-weight:400">（LINE STORE 熱門個人原創排行前 1,000 名）</span></h2>`;
+      if (!rids.length) h += `<div class="sub">目前沒有作品在前 1,000 名內。</div>`;
+      else h += `<table><thead><tr><th>作品</th><th class="n">名次</th><th class="n">較上次</th><th class="n">最佳</th></tr></thead><tbody>${rids.map(id => `<tr><td>${nmLink(S.sets.find(x => x.id === id))}<span class="tag">${id[0] === 's' ? '貼圖' : '表情貼'}</span></td><td class="n" style="white-space:nowrap"><b>第 ${fmt(R1.r[id])} 名</b></td><td class="n" style="white-space:nowrap">${!R0 ? '<span class="flat">—</span>' : (R0.r[id] == null ? '<span class="up">新進榜</span>' : deltaHTML(R0.r[id] - R1.r[id]))}</td><td class="n sub" style="white-space:nowrap">第 ${fmt(best[id])} 名</td></tr>`).join('')}</tbody></table>`;
+      if (dropped.length) h += `<div class="sub" style="margin-top:6px">掉出排行：${dropped.map(nm).join('、')}</div>`;
+      h += `<div class="sub" style="margin-top:8px">最後查詢：${dt(R1.t)}，只列出前 1,000 名，每小時更新一次。名次數字越小越前面，▲ 代表名次往前。</div></section>`;
+    }
+    h += `<section class="card chart"><div class="row" style="justify-content:space-between;margin-bottom:8px"><h2 style="margin:0">總愛心數變化</h2><div class="row">${[['today', '今天'], ['7d', '7 天'], ['30d', '30 天'], ['all', '全部']].map(([k, l]) => `<button class="btn sm${chartRange === k ? ' pri' : ''}" data-a="range" data-r="${k}">${l}</button>`).join('')}</div></div>${chart2(snaps)}</section>`;
+    const baseM = baseIdx >= 0 ? car[baseIdx] : {};
+    const rows = S.sets.map(s => { const b = baseM[s.id]; return { s, v: curM[s.id], d: (b != null && curM[s.id] != null && curM[s.id] !== b) ? curM[s.id] - b : null }; }).sort((a,b) => (b.v ?? -1) - (a.v ?? -1));
+    h += `<section class="card"><h2>各組貼圖排行</h2><table><thead><tr><th class="medal">#</th><th>貼圖名稱</th><th class="n">愛心數</th><th class="n">今天</th><th class="n hide-sm">走勢</th></tr></thead><tbody>`;
+    const zeroCnt = rows.filter(r => !r.v).length, showRows = showZero ? rows : rows.filter(r => r.v);
+    showRows.forEach((r,i) => {
+      h += `<tr><td class="medal"><span class="badge${i < 3 ? ' b' + (i + 1) : ''}">${i+1}</span></td><td>${nmLink(r.s)}${r.s.type ? `<span class="tag">${esc(r.s.type)}</span>` : ''}</td><td class="n"><b>${fmt(r.v)}</b></td><td class="n">${deltaHTML(r.d)}</td><td class="n hide-sm">${spark(r.s.id, snaps)}</td></tr>`;
+    });
+    if (zeroCnt) h += `<tr><td colspan="5" style="text-align:center;padding:10px"><button class="btn sm" data-a="togglezero">${showZero ? '▲ 收起 0 愛心的作品' : '▼ 顯示其他 ' + zeroCnt + ' 組 0 愛心的作品'}</button></td></tr>`;
+    h += `</tbody></table></section>`;
+  }
+  const C = S.cloud || {};
+  h += `<section class="card"><h2>雲端自動記錄</h2><div style="font-size:14px">
+    <p style="margin:0 0 6px">每 10 分鐘由 GitHub 自動讀一次全部作品的愛心數，排行每小時查一次。電腦不用開著，手機打開這個網頁就能看。</p>
+    <div class="sub">${C.lastRun ? '最後執行：' + ago(C.lastRun) + (C.ok != null ? `，讀到 ${C.ok} 組` : '') : '還沒執行過'}${C.failed && C.failed.length ? `，讀不到 ${C.failed.length} 組` : ''}${C.error ? '<br><span style="color:var(--red)">' + esc(C.error) + '</span>' : ''}${C.rankError ? '<br>排行：' + esc(C.rankError) : ''}</div>
+    <div class="sub" style="margin-top:4px">網頁每 5 分鐘自動更新${loadedAt ? '，上次讀取 ' + ago(loadedAt) : ''}。</div>
+  </div></section></div>`;
+  $app.innerHTML = h;
+  bindChart();
+}
+
+async function load(){
+  let d = null;
+  try { const r = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok) d = await r.json(); } catch(e){}
+  if (!d){ try { const r = await fetch(SEED_URL + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok) d = await r.json(); } catch(e){} }
+  if (d && Array.isArray(d.snaps)){ S = d; loadErr = ''; loadedAt = Date.now(); }
+  else loadErr = S ? '這次讀取失敗，顯示的是上一次的資料。' : '讀不到資料，請稍後再重新整理。';
+  render();
+}
+$app.addEventListener('click', e => {
+  const b = e.target.closest('[data-a]'); if (!b) return;
+  const a = b.dataset.a;
+  if (a === 'reload') load();
+  else if (a === 'togglezero'){ showZero = !showZero; render(); }
+  else if (a === 'togglefeed'){ showMoreFeed = !showMoreFeed; render(); }
+  else if (a === 'range'){ chartRange = b.dataset.r || '7d'; render(); }
+});
+let wasSm = window.innerWidth < 600;
+window.addEventListener('resize', () => { const s = window.innerWidth < 600; if (s !== wasSm){ wasSm = s; render(); } });
+setInterval(() => { const el = document.getElementById('subline'); if (el && S){ const sn = snapsSorted(); el.innerHTML = headSub(sn[sn.length - 1]); } }, 30000);
+setInterval(load, 5 * 60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - loadedAt > 60000) load(); });
+load();
+})();
+</script>
+</body>
+</html>
