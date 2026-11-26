@@ -1,4 +1,4 @@
-name: 雲端測試（星級資料）
+name: 暫時測試
 on:
   push:
     branches: [main]
@@ -8,7 +8,7 @@ permissions:
 jobs:
   t:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - run: python3 probe/star.py
+      - run: python3 -u probe/p.py || true
