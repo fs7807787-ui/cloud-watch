@@ -92,13 +92,15 @@ def parse(html):
         bed = bed.group(1) if bed else "?"
         if any(k in bed for k in SKIP_BEDS):
             continue
+        sm = re.search(r'"hotelStar":\{"star":(\d+(?:\.\d+)?)[^{}]*?"starType":(\d+)', block)
+        star = (float(sm.group(1)), int(sm.group(2))) if sm else (0.0, 0)
         tot = re.search(r'"priceExplanation":"總價：TWD([\d,]+)', block)
         price = float(tot.group(1).replace(",", "")) if tot else float(pr.group(1))
         try:
             name = json.loads('"' + nm.group(1) + '"')
         except Exception:
             name = nm.group(1)
-        out.append((hid, name.strip("\u200b "), price, bed))
+        out.append((hid, name.strip("\u200b "), price, bed, star))
     return out
 
 

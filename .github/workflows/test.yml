@@ -1,4 +1,4 @@
-name: 雲端測試（Trip.com 星級欄位）
+name: 雲端測試（Trip.com 星級統計）
 
 on:
   workflow_dispatch:
