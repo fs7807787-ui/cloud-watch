@@ -109,6 +109,7 @@ TAIWAN = {617, 7662, 7570, 3849, 3847, 720, 7614, 6954, 3848, 5589, 7524, 650358
 
 
 NOT_HOTEL = re.compile(r"民宿|villa|別墅|公寓|套房|apartment|俬宅|獨棟|stay\b|house|寵物友善|\d{3}\s*$|\d室\d床", re.I)
+NOT_B_AND_B = re.compile(r"民宿|villa|別墅|獨棟", re.I)
 OFFICIAL_FILE = os.environ.get("OFFICIAL_FILE", "data/tw_official.json")
 TW_COUNTY = {"台北": ["臺北市"], "新北": ["新北市"], "桃園": ["桃園市"], "台中": ["臺中市"], "台南": ["臺南市"], "高雄": ["高雄市"],
              "宜蘭": ["宜蘭縣"], "花蓮": ["花蓮縣"], "台東": ["臺東縣"], "屏東墾丁": ["屏東縣"], "南投": ["南投縣"], "嘉義": ["嘉義市", "嘉義縣"]}
@@ -168,7 +169,9 @@ def star_bad(cid, hid, name, star):
     stars, stype = star
     if hid in EXCLUDE:
         return "手動排除"
-    if NOT_HOTEL.search(name):
+    # Trip.com 標「飯店星級」的，名字有「公寓、Stay、套房」多半是連鎖飯店的服務式公寓館（例如索菲特首爾大使飯店和服務式公寓），
+    # 只有名字寫明民宿、Villa、別墅才排除；其他類型照名字判斷
+    if (NOT_B_AND_B if stype == 1 else NOT_HOTEL).search(name):
         return "看起來是民宿或公寓，不是飯店"
     if cid in TAIWAN:
         o = official(CITIES[cid], name) if _OFF else None
