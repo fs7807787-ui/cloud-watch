@@ -15,6 +15,23 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - name: 連線診斷（不登入）
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import smtplib, socket, ssl
+          for h in ["smtp.gmail.com"]:
+              print("DNS", h, sorted({a[4][0] for a in socket.getaddrinfo(h, 587)}))
+          try:
+              s = smtplib.SMTP("smtp.gmail.com", 587, timeout=20); print("587 banner ok", s.ehlo()[0]); s.starttls(); print("587 starttls ok", s.ehlo()[0]); s.quit()
+          except Exception as e: print("587 diag fail", repr(e))
+          try:
+              s = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=20); print("465 ok", s.ehlo()[0]); s.quit()
+          except Exception as e: print("465 diag fail", repr(e))
+          try:
+              s = socket.create_connection(("smtp.gmail.com", 587), timeout=20); print("587 raw:", s.recv(200)); s.close()
+          except Exception as e: print("587 raw fail", repr(e))
+          PY
       - name: 寄一封測試信
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
