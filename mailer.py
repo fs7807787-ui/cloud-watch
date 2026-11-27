@@ -32,9 +32,17 @@ def send_mail(subject, body, link=None, link_text="打開查看"):
            f'style="background:#1a73e8;color:#fff;padding:10px 18px;border-radius:6px;'
            f'text-decoration:none;display:inline-block">{html.escape(link_text)}</a></p>') if link else ""
     m.add_alternative(f'<div style="font-size:15px;line-height:1.6">{lines}</div>{btn}', subtype="html")
-    for i in range(3):
+    for i in range(4):
+        port = 587 if i % 2 == 0 else 465
         try:
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as s:
+            if port == 587:
+                s = smtplib.SMTP("smtp.gmail.com", 587, timeout=30)
+                s.ehlo()
+                s.starttls()
+                s.ehlo()
+            else:
+                s = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30)
+            with s:
                 s.login(ADDR, PASSWORD)
                 s.send_message(m)
             print("email 已寄出：", subject, flush=True)
@@ -43,6 +51,6 @@ def send_mail(subject, body, link=None, link_text="打開查看"):
             print("email 登入失敗（應用程式密碼或地址不對）：", e.smtp_code, flush=True)
             return False
         except Exception as e:
-            print("email 失敗：", repr(e), flush=True)
+            print(f"email 失敗（port {port}）：", repr(e), flush=True)
             time.sleep(5 * (i + 1))
     return False
