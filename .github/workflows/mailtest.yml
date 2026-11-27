@@ -43,6 +43,13 @@ jobs:
               s.login(a.strip(), pp); print("LOGIN OK"); s.quit()
           except smtplib.SMTPAuthenticationError as e: print("LOGIN AUTH ERROR", e.smtp_code, e.smtp_error[:120])
           except Exception as e: print("LOGIN stage fail", repr(e))
+          import base64
+          for ip in sorted({x[4][0] for x in socket.getaddrinfo("smtp.gmail.com", 587, socket.AF_INET)})[:2]:
+              try:
+                  s = smtplib.SMTP(timeout=20); s._host = "smtp.gmail.com"; s.connect(ip, 587); s.ehlo(); s.starttls(); s.ehlo()
+                  c, r = s.docmd("AUTH", "LOGIN " + base64.b64encode(a.strip().encode()).decode()); print(ip, "AUTH LOGIN user ->", c, r[:60])
+                  c, r = s.docmd(base64.b64encode(pp.encode()).decode()); print(ip, "AUTH LOGIN pass ->", c, r[:160]); s.close()
+              except Exception as e: print(ip, "AUTH LOGIN fail", repr(e))
           try:
               s = socket.create_connection(("smtp.gmail.com", 587), timeout=20); print("587 raw:", s.recv(200)); s.close()
           except Exception as e: print("587 raw fail", repr(e))
