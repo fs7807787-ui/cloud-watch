@@ -23,6 +23,8 @@ import time
 import urllib.error
 import urllib.request
 
+from mailer import send_mail
+
 CITIES = {
     # 台灣
     617: "台北", 7662: "新北", 7570: "桃園", 3849: "台中", 3847: "台南", 720: "高雄",
@@ -210,6 +212,7 @@ def ntfy(title, msg, click):
             with urllib.request.urlopen(req, timeout=20) as r:
                 if json.loads(r.read().decode()).get("id"):
                     log("通知已送出：", title)
+                    send_mail(title, msg.replace("點通知開 Trip.com 確認", "").rstrip(), click, "打開 Trip.com 確認")
                     return True
         except Exception as e:
             log("ntfy 失敗：", repr(e))

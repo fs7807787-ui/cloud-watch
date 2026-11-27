@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["ptt.py", ".github/workflows/ptt.yml"]
+    paths: ["ptt.py", "mailer.py", ".github/workflows/ptt.yml"]
 
 permissions:
   contents: write
@@ -26,6 +26,8 @@ jobs:
       - name: 檢查新文章
         env:
           NTFY_BUG_TOPIC: ${{ secrets.NTFY_BUG_TOPIC }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: python3 ptt.py
       - name: 存回 ptt 分支
         if: always()

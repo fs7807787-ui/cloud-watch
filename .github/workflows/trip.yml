@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["trip.py", ".github/workflows/trip.yml"]
+    paths: ["trip.py", "mailer.py", ".github/workflows/trip.yml"]
 
 permissions:
   contents: write
@@ -27,6 +27,8 @@ jobs:
       - name: 檢查價格
         env:
           NTFY_BUG_TOPIC: ${{ secrets.NTFY_BUG_TOPIC }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: python3 trip.py
       - name: 存回 trip 分支
         if: always()

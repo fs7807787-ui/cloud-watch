@@ -14,6 +14,8 @@ import urllib.error
 import urllib.request
 import urllib.robotparser
 
+from mailer import send_mail
+
 BOARDS = {"Lifeismoney": "省錢板", "Japan_Travel": "日旅板", "Tour-Agency": "國旅板"}
 KEYWORDS = {"BUG": r"bug", "標錯": r"標錯", "錯價": r"錯價", "誤標": r"誤標", "價格錯誤": r"價格錯誤",
             "0元": r"(?<![\d.,])0\s?元", "1元": r"(?<![\d.,])1\s?元", "快搶": r"快搶", "神價": r"神價",
@@ -91,6 +93,7 @@ def ntfy(title, msg, click, prio):
             with urllib.request.urlopen(req, timeout=20) as r:
                 if json.loads(r.read().decode()).get("id"):
                     log("通知已送出：", title)
+                    send_mail(title, msg.replace("點通知開 PTT 文章", "").rstrip(), click, "打開 PTT 文章")
                     return True
         except Exception as e:
             log("ntfy 失敗：", repr(e))

@@ -67,7 +67,7 @@ jobs:
           git commit -qm "愛心紀錄 $(TZ=Asia/Taipei date '+%Y/%m/%d %H:%M')"
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
 
-      - name: 順便啟動 Trip.com（每 30 分鐘）與 PTT（每 10 分鐘）檢查
+      - name: 順便啟動 Trip.com（每 30 分鐘）、PTT 與機票 email 轉寄（每 10 分鐘）
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
@@ -75,3 +75,4 @@ jobs:
           m=$(date -u +%M); m=$((10#$m % 30))
           if [ "$m" -lt 10 ]; then gh workflow run trip.yml -R "${{ github.repository }}" && echo "已啟動 Trip.com 檢查"; else echo "這次不用"; fi
           gh workflow run ptt.yml -R "${{ github.repository }}" && echo "已啟動 PTT 檢查"
+          gh workflow run flightmail.yml -R "${{ github.repository }}" && echo "已啟動機票 email 轉寄"

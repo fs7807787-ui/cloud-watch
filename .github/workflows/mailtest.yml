@@ -1,0 +1,31 @@
+name: email 通知測試
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/mailtest/trigger.txt"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: 寄一封測試信
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          python3 - <<'PY'
+          import sys
+          from mailer import send_mail
+          ok = send_mail("✅ email 通知測試",
+                         "收到這封代表之後 bug 價和機票通知，除了 ntfy 也會寄 email 給你。\n"
+                         "bug 價（Trip.com、PTT）：和 ntfy 同時寄出。\n機票：ntfy 發出後 10 分鐘內轉寄。",
+                         "https://fs7807787-ui.github.io/cloud-watch/", "打開 cloud-watch")
+          sys.exit(0 if ok else 1)
+          PY
