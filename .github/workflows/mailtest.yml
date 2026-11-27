@@ -15,8 +15,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: 連線診斷（不登入）
+      - name: 連線診斷（不印出密碼）
         continue-on-error: true
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
           python3 - <<'PY'
           import smtplib, socket, ssl
@@ -28,6 +31,18 @@ jobs:
           try:
               s = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=20); print("465 ok", s.ehlo()[0]); s.quit()
           except Exception as e: print("465 diag fail", repr(e))
+          import os, unicodedata
+          a = os.environ.get("GMAIL_ADDRESS", ""); p = os.environ.get("GMAIL_APP_PASSWORD", "")
+          print("address: len", len(a), "ascii", a.isascii(), "gmail", a.strip().lower().endswith("@gmail.com"), "spaces/newlines", sum(c.isspace() for c in a))
+          print("password: len", len(p), "ascii", p.isascii(), "letters", sum(c.isalpha() for c in p), "ascii-spaces", p.count(" "), "other-space", sum(c.isspace() and c != " " for c in p),
+                "non-ascii kinds", sorted({unicodedata.name(c, "?") for c in p if not c.isascii()}))
+          pp = "".join(c for c in p if not c.isspace())
+          try:
+              s = smtplib.SMTP("smtp.gmail.com", 587, timeout=20); s.ehlo(); s.starttls(); s.ehlo()
+              print("auth methods", s.esmtp_features.get("auth"))
+              s.login(a.strip(), pp); print("LOGIN OK"); s.quit()
+          except smtplib.SMTPAuthenticationError as e: print("LOGIN AUTH ERROR", e.smtp_code, e.smtp_error[:120])
+          except Exception as e: print("LOGIN stage fail", repr(e))
           try:
               s = socket.create_connection(("smtp.gmail.com", 587), timeout=20); print("587 raw:", s.recv(200)); s.close()
           except Exception as e: print("587 raw fail", repr(e))
